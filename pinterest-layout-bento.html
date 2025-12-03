@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pinterest Style Layout - Bento Grid Framework</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets\css\bento-grid.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            padding: 40px 20px;
+            min-height: 100vh;
+            margin: 0;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .page-header h1 {
+            font-size: 3rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+        
+        .page-header p {
+            font-size: 1.2rem;
+            color: #b0b0b0;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Code Preview */
+        .code-preview {
+            background: var(--bg-secondary);
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .preview-header {
+            padding: 1rem 1.5rem;
+            background: var(--bg-tertiary);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .preview-title {
+            font-weight: 500;
+        }
+
+        .preview-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .preview-body {
+            padding: 2rem;
+            min-height: 200px;
+        }
+
+        .code-container {
+            background: var(--bg-primary);
+            border-radius: var(--radius);
+            overflow: hidden;
+            margin-top: 1rem;
+        }
+
+        .code-header {
+            padding: 0.75rem 1.5rem;
+            background: var(--bg-tertiary);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .code-content {
+            padding: 1.5rem;
+            overflow-x: auto;
+        }
+
+        pre {
+            margin: 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        code {
+            color: #e0e0e0;
+        }
+
+        .token.tag {
+            color: #ff6b8b;
+        }
+
+        .token.attr-name {
+            color: #ffcc00;
+        }
+
+        .token.attr-value {
+            color: #66ff99;
+        }
+
+        .token.comment {
+            color: #888;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #3a5aff;
+            color: var(--text-primary);
+            padding: 0.8rem 1.5rem;
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-weight: 500;
+            border: 1px solid var(--border);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 10px;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .page-header p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bento-container">
+        <div class="page-header">
+            <h1>Pinterest Style Layout</h1>
+            <p>Masonry-style grid layout with varying card heights for dynamic, visually appealing content displays.</p>
+        </div>
+
+        <!-- Pinterest Style Bento Grid -->
+        <div class="bento-grid layout-pinterest">
+            <!-- Featured Carousel Item -->
+            <div class="bento-item featured tall">
+                <div class="carousel-container">
+                    <div class="carousel-slide active">
+                        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&h=600&fit=crop" alt="Web Development" class="carousel-image">
+                        <div class="carousel-content">
+                            <h2>The Future of Web Development</h2>
+                            <p>Exploring emerging technologies and frameworks shaping the next generation of web experiences.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-slide">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop" alt="AI Trends" class="carousel-image">
+                        <div class="carousel-content">
+                            <h2>AI and Machine Learning Trends</h2>
+                            <p>Discover how artificial intelligence is revolutionizing industries across the globe.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-slide">
+                        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&h=600&fit=crop" alt="Remote Work" class="carousel-image">
+                        <div class="carousel-content">
+                            <h2>Remote Work Revolution</h2>
+                            <p>How distributed teams are reshaping the modern workplace and corporate culture.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-dots"></div>
+                </div>
+            </div>
+
+            <!-- Regular Cards -->
+            <div class="bento-item">
+                <span class="article-tag">Technology</span>
+                <h3>Mastering CSS Grid</h3>
+                <p>Learn advanced layout techniques to create responsive and beautiful web designs.</p>
+                <span class="read-time">5 min read</span>
+            </div>
+
+            <div class="bento-item tall">
+                <span class="article-tag">Design</span>
+                <h3>Minimalist UI Design Principles</h3>
+                <p>Discover the art of creating clean, functional interfaces that users love. Learn how to balance aesthetics with usability in modern web design.</p>
+                <span class="read-time">8 min read</span>
+            </div>
+
+            <div class="bento-item">
+                <span class="article-tag">JavaScript</span>
+                <h3>Async/Await Best Practices</h3>
+                <p>Master asynchronous programming patterns for cleaner, more maintainable code.</p>
+                <span class="read-time">7 min read</span>
+            </div>
+
+            <div class="bento-item wide">
+                <span class="article-tag">Performance</span>
+                <h3>Optimizing Web Performance</h3>
+                <p>Essential techniques to make your websites load faster and perform better.</p>
+                <span class="read-time">6 min read</span>
+            </div>
+
+            <div class="bento-item">
+                <span class="article-tag">React</span>
+                <h3>React Hooks Deep Dive</h3>
+                <p>Understanding useState, useEffect, and custom hooks for modern React development.</p>
+                <span class="read-time">10 min read</span>
+            </div>
+
+            <div class="bento-item tall">
+                <span class="article-tag">UX Research</span>
+                <h3>User Testing Strategies</h3>
+                <p>Effective methods for gathering user feedback and improving product experiences. Learn how to conduct meaningful user interviews and usability tests.</p>
+                <span class="read-time">12 min read</span>
+            </div>
+
+            <div class="bento-item">
+                <span class="article-tag">Security</span>
+                <h3>Web Security Essentials</h3>
+                <p>Protect your applications from common vulnerabilities and security threats.</p>
+                <span class="read-time">9 min read</span>
+            </div>
+
+            <div class="bento-item">
+                <span class="article-tag">DevOps</span>
+                <h3>CI/CD Pipeline Setup</h3>
+                <p>Automate your deployment process with continuous integration and delivery.</p>
+                <span class="read-time">11 min read</span>
+            </div>
+
+            <div class="bento-item wide tall">
+                <span class="article-tag">Architecture</span>
+                <h3>Microservices Architecture Guide</h3>
+                <p>Building scalable applications with microservices patterns. Explore service communication, data management, and deployment strategies for distributed systems.</p>
+                <span class="read-time">15 min read</span>
+            </div>
+
+            <div class="bento-item">
+                <span class="article-tag">CSS</span>
+                <h3>Flexbox vs Grid</h3>
+                <p>When to use Flexbox and when to use CSS Grid for modern layouts.</p>
+                <span class="read-time">5 min read</span>
+            </div>
+
+            <div class="bento-item tall">
+                <span class="article-tag">APIs</span>
+                <h3>RESTful API Design</h3>
+                <p>Best practices for designing clean, maintainable REST APIs. Learn about resource naming, HTTP methods, status codes, and versioning strategies.</p>
+                <span class="read-time">13 min read</span>
+            </div>
+
+            <div class="bento-item">
+                <span class="article-tag">TypeScript</span>
+                <h3>TypeScript for Beginners</h3>
+                <p>Get started with TypeScript and add type safety to your JavaScript projects.</p>
+                <span class="read-time">8 min read</span>
+            </div>
+
+            <div class="bento-item">
+                <span class="article-tag">Testing</span>
+                <h3>Unit Testing Strategies</h3>
+                <p>Write effective unit tests that catch bugs and improve code quality.</p>
+                <span class="read-time">7 min read</span>
+            </div>
+
+            <div class="bento-item wide">
+                <span class="article-tag">Cloud</span>
+                <h3>AWS vs Azure vs GCP</h3>
+                <p>Comparing major cloud platforms to choose the right one for your project.</p>
+                <span class="read-time">10 min read</span>
+            </div>
+
+            <div class="bento-item tall">
+                <span class="article-tag">Mobile</span>
+                <h3>Progressive Web Apps</h3>
+                <p>Build web applications that work offline and feel like native apps. Learn about service workers, app manifests, and push notifications.</p>
+                <span class="read-time">14 min read</span>
+            </div>
+
+            <div class="bento-item">
+                <span class="article-tag">Database</span>
+                <h3>SQL vs NoSQL</h3>
+                <p>Understanding when to use relational and non-relational databases.</p>
+                <span class="read-time">6 min read</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="code-container">
+                <div class="code-header">
+                    <div>HTML Code</div>
+                    <div class="preview-actions">
+                        <button class="btn" onclick="copyCode('carousel-code')">Copy</button>
+                    </div>
+                </div>
+                <div class="code-content">
+                    <pre id="carousel-code">
+                        <code>
+        &lt;div class="bento-grid layout-pinterest"&gt;
+            &lt;!-- Featured Carousel Item --&gt;
+            &lt;div class="bento-item featured tall"&gt;
+                &lt;div class="carousel-container"&gt;
+                    &lt;div class="carousel-slide active"&gt;
+                        &lt;img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&h=600&fit=crop" alt="Web Development" class="carousel-image"&gt;
+                        &lt;div class="carousel-content"&gt;
+                            &lt;h2&gt;The Future of Web Development&lt;/h2&gt;
+                            &lt;p&gt;Exploring emerging technologies and frameworks shaping the next generation of web experiences.&lt;/p&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                    
+                    &lt;div class="carousel-slide"&gt;
+                        &lt;img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop" alt="AI Trends" class="carousel-image"&gt;
+                        &lt;div class="carousel-content"&gt;
+                            &lt;h2&gt;AI and Machine Learning Trends&lt;/h2&gt;
+                            &lt;p&gt;Discover how artificial intelligence is revolutionizing industries across the globe.&lt;/p&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                    
+                    &lt;div class="carousel-slide"&gt;
+                        &lt;img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&h=600&fit=crop" alt="Remote Work" class="carousel-image"&gt;
+                        &lt;div class="carousel-content"&gt;
+                            &lt;h2&gt;Remote Work Revolution&lt;/h2&gt;
+                            &lt;p&gt;How distributed teams are reshaping the modern workplace and corporate culture.&lt;/p&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                    
+                    &lt;div class="carousel-dots"&gt;&lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;!-- Regular Cards --&gt;
+            &lt;div class="bento-item"&gt;
+                &lt;span class="article-tag"&gt;Technology&lt;/span&gt;
+                &lt;h3&gt;Mastering CSS Grid&lt;/h3&gt;
+                &lt;p&gt;Learn advanced layout techniques to create responsive and beautiful web designs.&lt;/p&gt;
+                &lt;span class="read-time"&gt;5 min read&lt;/span&gt;
+            &lt;/div&gt;
+
+            &lt;div class="bento-item tall"&gt;
+                &lt;span class="article-tag"&gt;Design&lt;/span&gt;
+                &lt;h3&gt;Minimalist UI Design Principles&lt;/h3&gt;
+                &lt;p&gt;Discover the art of creating clean, functional interfaces that users love. Learn how to balance aesthetics with usability in modern web design.&lt;/p&gt;
+                &lt;span class="read-time"&gt;8 min read&lt;/span&gt;
+            &lt;/div&gt;
+
+            &lt;div class="bento-item"&gt;
+                &lt;span class="article-tag"&gt;JavaScript&lt;/span&gt;
+                &lt;h3&gt;Async/Await Best Practices&lt;/h3&gt;
+                &lt;p&gt;Master asynchronous programming patterns for cleaner, more maintainable code.&lt;/p&gt;
+                &lt;span class="read-time"&gt;7 min read&lt;/span&gt;
+            &lt;/div&gt;
+
+            &lt;div class="bento-item wide"&gt;
+                &lt;span class="article-tag"&gt;Performance&lt;/span&gt;
+                &lt;h3&gt;Optimizing Web Performance&lt;/h3&gt;
+                &lt;p&gt;Essential techniques to make your websites load faster and perform better.&lt;/p&gt;
+                &lt;span class="read-time"&gt;6 min read&lt;/span&gt;
+            &lt;/div&gt;
+
+            &lt;div class="bento-item"&gt;
+                &lt;span class="article-tag"&gt;React&lt;/span&gt;
+                &lt;h3&gt;React Hooks Deep Dive&lt;/h3&gt;
+                &lt;p&gt;Understanding useState, useEffect, and custom hooks for modern React development.&lt;/p&gt;
+                &lt;span class="read-time"&gt;10 min read&lt;/span&gt;
+            &lt;/div&gt;
+
+            &lt;div class="bento-item tall"&gt;
+                &lt;span class="article-tag"&gt;UX Research&lt;/span&gt;
+                &lt;h3&gt;User Testing Strategies&lt;/h3&gt;
+                &lt;p&gt;Effective methods for gathering user feedback and improving product experiences. Learn how to conduct meaningful user interviews and usability tests.&lt;/p&gt;
+                &lt;span class="read-time"&gt;12 min read&lt;/span&gt;
+            &lt;/div&gt;
+
+            &lt;div class="bento-item"&gt;
+                &lt;span class="article-tag"&gt;Security&lt;/span&gt;
+                &lt;h3&gt;Web Security Essentials&lt;/h3&gt;
+                &lt;p&gt;Protect your applications from common vulnerabilities and security threats.&lt;/p&gt;
+                &lt;span class="read-time"&gt;9 min read&lt;/span&gt;
+            &lt;/div&gt;
+
+            &lt;div class="bento-item"&gt;
+                &lt;span class="article-tag"&gt;DevOps&lt;/span&gt;
+                &lt;h3&gt;CI/CD Pipeline Setup&lt;/h3&gt;
+                &lt;p&gt;Automate your deployment process with continuous integration and delivery.&lt;/p&gt;
+                &lt;span class="read-time"&gt;11 min read&lt;/span&gt;
+            &lt;/div&gt;
+
+            &lt;div class="bento-item wide tall"&gt;
+                &lt;span class="article-tag"&gt;Architecture&lt;/span&gt;
+                &lt;h3&gt;Microservices Architecture Guide&lt;/h3&gt;
+                &lt;p&gt;Building scalable applications with microservices patterns. Explore service communication, data management, and deployment strategies for distributed systems.&lt;/p&gt;
+                &lt;span class="read-time"&gt;15 min read&lt;/span&gt;
+            &lt;/div&gt;
+
+            &lt;div class="bento-item"&gt;
+                &lt;span class="article-tag"&gt;CSS&lt;/span&gt;
+                &lt;h3&gt;Flexbox vs Grid&lt;/h3&gt;
+                &lt;p&gt;When to use Flexbox and when to use CSS Grid for modern layouts.&lt;/p&gt;
+                &lt;span class="read-time"&gt;5 min read&lt;/span&gt;
+            &lt;/div&gt;
+
+            &lt;div class="bento-item tall"&gt;
+                &lt;span class="article-tag"&gt;APIs&lt;/span&gt;
+                &lt;h3&gt;RESTful API Design&lt;/h3&gt;
+                &lt;p&gt;Best practices for designing clean, maintainable REST APIs. Learn about resource naming, HTTP methods, status codes, and versioning strategies.&lt;/p&gt;
+                &lt;span class="read-time"&gt;13 min read&lt;/span&gt;
+            &lt;/div&gt;
+
+            &lt;div class="bento-item"&gt;
+                &lt;span class="article-tag"&gt;TypeScript&lt;/span&gt;
+                &lt;h3&gt;TypeScript for Beginners&lt;/h3&gt;
+                &lt;p&gt;Get started with TypeScript and add type safety to your JavaScript projects.&lt;/p&gt;
+                &lt;span class="read-time"&gt;8 min read&lt;/span&gt;
+            &lt;/div&gt;
+
+            &lt;div class="bento-item"&gt;
+                &lt;span class="article-tag"&gt;Testing&lt;/span&gt;
+                &lt;h3&gt;Unit Testing Strategies&lt;/h3&gt;
+                &lt;p&gt;Write effective unit tests that catch bugs and improve code quality.&lt;/p&gt;
+                &lt;span class="read-time"&gt;7 min read&lt;/span&gt;
+            &lt;/div&gt;
+
+            &lt;div class="bento-item wide"&gt;
+                &lt;span class="article-tag"&gt;Cloud&lt;/span&gt;
+                &lt;h3&gt;AWS vs Azure vs GCP&lt;/h3&gt;
+                &lt;p&gt;Comparing major cloud platforms to choose the right one for your project.&lt;/p&gt;
+                &lt;span class="read-time"&gt;10 min read&lt;/span&gt;
+            &lt;/div&gt;
+
+            &lt;div class="bento-item tall"&gt;
+                &lt;span class="article-tag"&gt;Mobile&lt;/span&gt;
+                &lt;h3&gt;Progressive Web Apps&lt;/h3&gt;
+                &lt;p&gt;Build web applications that work offline and feel like native apps. Learn about service workers, app manifests, and push notifications.&lt;/p&gt;
+                &lt;span class="read-time"&gt;14 min read&lt;/span&gt;
+            &lt;/div&gt;
+
+            &lt;div class="bento-item"&gt;
+                &lt;span class="article-tag"&gt;Database&lt;/span&gt;
+                &lt;h3&gt;SQL vs NoSQL&lt;/h3&gt;
+                &lt;p&gt;Understanding when to use relational and non-relational databases.&lt;/p&gt;
+                &lt;span class="read-time"&gt;6 min read&lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+                    </code></pre>
+                </div>
+            </div>
+    <script src="assets\js\bento-grid.js"></script>
+    <script>
+        function copyCode(id) {
+            const codeElement = document.getElementById(id);
+            const textArea = document.createElement('textarea');
+            textArea.value = codeElement.textContent;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+            
+            // Show feedback
+            const button = event.target;
+            const originalText = button.textContent;
+            button.textContent = 'Copied!';
+            button.style.background = '#2ecc71';
+            
+            setTimeout(() => {
+                button.textContent = originalText;
+                button.style.background = '';
+            }, 2000);
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,649 @@
+/* Bento Grid Framework - Core CSS */
+:root {
+    --bento-bg-primary: #0a0a0a;
+    --bento-bg-secondary: #1a1a1a;
+    --bento-bg-tertiary: #2a2a2a;
+    --bento-text-primary: #ffffff;
+    --bento-text-secondary: #e0e0e0;
+    --bento-text-tertiary: #888;
+    --bento-accent: #3a3a3a;
+    --bento-border: #2a2a2a;
+    --bento-radius: 10px;
+    --bento-transition: all 0.3s ease;
+}
+
+/* Reset & Base */
+.bento-reset {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.bento-body {
+    font-family: 'Roboto', sans-serif;
+    background: var(--bento-bg-primary);
+    color: var(--bento-text-primary);
+    padding: 40px 20px;
+    min-height: 100vh;
+}
+
+/* Bento Grid Container */
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    grid-auto-rows: 280px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Bento Item */
+.bento-item {
+    background: var(--bento-bg-secondary);
+    border-radius: var(--bento-radius);
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    border: 1px solid var(--bento-border);
+}
+
+.bento-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    border-color: var(--bento-accent);
+}
+
+/* Size Modifiers */
+.bento-item.span-2 { grid-column: span 2; }
+.bento-item.span-3 { grid-column: span 3; }
+.bento-item.row-2 { grid-row: span 2; }
+.bento-item.row-3 { grid-row: span 3; }
+
+/* Featured Item */
+.bento-item.featured {
+    grid-column: span 2;
+    grid-row: span 2;
+    background: linear-gradient(135deg, var(--bento-bg-secondary) 0%, var(--bento-bg-tertiary) 100%);
+}
+
+/* Article Tag */
+.article-tag {
+    display: inline-block;
+    padding: 6px 12px;
+    background: var(--bento-bg-tertiary);
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    margin-bottom: 15px;
+    color: var(--bento-text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+/* Bento Title - Fixed text overflow */
+.bento-item h3 {
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: var(--bento-text-primary);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.4;
+    max-height: 2.8em;
+}
+
+/* Bento Description - Fixed text overflow with ellipsis */
+.bento-item p {
+    font-size: 0.9rem;
+    color: var(--bento-text-tertiary);
+    line-height: 1.6;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 4.8em;
+    margin-bottom: 10px;
+}
+
+/* Special case for carousel content paragraphs */
+.carousel-content p {
+    -webkit-line-clamp: 2;
+    max-height: 3.2em;
+}
+
+/* Read Time */
+.read-time {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    font-size: 0.8rem;
+    color: #666;
+}
+
+/* Carousel */
+.carousel-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.carousel-slide {
+    display: none;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.carousel-slide.active {
+    display: flex;
+}
+
+.carousel-image {
+    width: 100%;
+    height: 60%;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.carousel-content h2 {
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: var(--bento-text-primary);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.4;
+    max-height: 2.8em;
+}
+
+.carousel-content p {
+    font-size: 0.95rem;
+    color: #b0b0b0;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 3.2em;
+}
+
+.carousel-dots {
+    position: absolute;
+    bottom: 150px;
+    left: 30px;
+    display: flex;
+    gap: 8px;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #4a4a4a;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    background: var(--bento-text-primary);
+    width: 24px;
+    border-radius: 4px;
+}
+
+/* ========================= */
+/* PRE-DEFINED LAYOUT CLASSES */
+/* ========================= */
+
+/* 1. PINTEREST STYLE LAYOUT - Complete Implementation */
+.bento-grid.layout-pinterest {
+    grid-auto-rows: minmax(280px, auto);
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+.bento-grid.layout-pinterest .bento-item {
+    min-height: 280px;
+    height: auto;
+}
+
+/* Pinterest specific modifiers */
+.bento-grid.layout-pinterest .bento-item.tall {
+    grid-row: span 2;
+    min-height: 560px;
+}
+
+.bento-grid.layout-pinterest .bento-item.wide {
+    grid-column: span 2;
+}
+
+.bento-grid.layout-pinterest .bento-item.featured {
+    grid-column: span 1;
+    grid-row: span 2;
+}
+
+
+/* 3. HEADER BANNER LAYOUT */
+.bento-grid.layout-header-banner {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 400px 280px 280px;
+    grid-template-areas: 
+        "banner banner banner"
+        "content1 content2 content3"
+        "content4 content5 content6";
+    gap: 20px;
+}
+
+.bento-grid.layout-header-banner .banner-item {
+    grid-area: banner;
+}
+
+.bento-grid.layout-header-banner .content-1 { grid-area: content1; }
+.bento-grid.layout-header-banner .content-2 { grid-area: content2; }
+.bento-grid.layout-header-banner .content-3 { grid-area: content3; }
+.bento-grid.layout-header-banner .content-4 { grid-area: content4; }
+.bento-grid.layout-header-banner .content-5 { grid-area: content5; }
+.bento-grid.layout-header-banner .content-6 { grid-area: content6; }
+
+/* 4. BALANCED GRID LAYOUT */
+.bento-grid.layout-balanced {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 280px);
+    grid-template-areas: 
+        "large large medium1 medium2"
+        "large large small1 small2"
+        "medium3 medium4 small3 small4";
+    gap: 20px;
+}
+
+.bento-grid.layout-balanced .large-item {
+    grid-area: large;
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.bento-grid.layout-balanced .medium-1 { grid-area: medium1; }
+.bento-grid.layout-balanced .medium-2 { grid-area: medium2; }
+.bento-grid.layout-balanced .medium-3 { grid-area: medium3; }
+.bento-grid.layout-balanced .medium-4 { grid-area: medium4; }
+.bento-grid.layout-balanced .small-1 { grid-area: small1; }
+.bento-grid.layout-balanced .small-2 { grid-area: small2; }
+.bento-grid.layout-balanced .small-3 { grid-area: small3; }
+.bento-grid.layout-balanced .small-4 { grid-area: small4; }
+
+/* 5. ASYMMETRICAL LAYOUT */
+.bento-grid.layout-asymmetrical {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(3, 280px);
+    grid-template-areas: 
+        "main main main side1 side2"
+        "main main main content1 content2"
+        "small1 small2 small3 small4 small5";
+    gap: 20px;
+}
+
+.bento-grid.layout-asymmetrical .main-item {
+    grid-area: main;
+    grid-column: span 3;
+    grid-row: span 2;
+}
+
+.bento-grid.layout-asymmetrical .side-1 { grid-area: side1; }
+.bento-grid.layout-asymmetrical .side-2 { grid-area: side2; }
+.bento-grid.layout-asymmetrical .content-1 { grid-area: content1; }
+.bento-grid.layout-asymmetrical .content-2 { grid-area: content2; }
+.bento-grid.layout-asymmetrical .small-1 { grid-area: small1; }
+.bento-grid.layout-asymmetrical .small-2 { grid-area: small2; }
+.bento-grid.layout-asymmetrical .small-3 { grid-area: small3; }
+.bento-grid.layout-asymmetrical .small-4 { grid-area: small4; }
+.bento-grid.layout-asymmetrical .small-5 { grid-area: small5; }
+
+
+
+
+
+
+/* Replace the entire @media (max-width: 768px) section with this: */
+@media (max-width: 768px) {
+    .bento-grid {
+        display: grid;
+        grid-template-columns: 1fr !important; /* Single column */
+        gap: 20px; /* Maintain spacing */
+        padding: 0 15px; /* Add side padding */
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+    
+    .bento-item {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 25px; /* Nice padding */
+        margin: 0 !important; /* Remove any margins */
+    }
+    
+    /* Reset all layouts to single column */
+    .bento-grid.layout-pinterest,
+    .bento-grid.layout-featured-focus,
+    .bento-grid.layout-header-banner,
+    .bento-grid.layout-balanced,
+    .bento-grid.layout-asymmetrical {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        grid-template-rows: auto !important;
+        grid-template-areas: none !important;
+        gap: 20px;
+    }
+    
+    /* Reset all specific layout classes */
+    .bento-item.span-2,
+    .bento-item.span-3,
+    .bento-item.row-2,
+    .bento-item.row-3,
+    .bento-item.featured,
+    .bento-item.tall,
+    .bento-item.wide,
+    .bento-item.banner-item,
+    .bento-item.large-item,
+    .bento-item.main-item,
+    .bento-item[class*="content-"],
+    .bento-item[class*="small-"],
+    .bento-item[class*="medium-"],
+    .bento-item[class*="side-"] {
+        grid-column: 1 !important;
+        grid-row: auto !important;
+        grid-area: unset !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+    }
+    
+    /* Featured item on mobile */
+    .bento-item.featured {
+        grid-column: 1 !important;
+        grid-row: auto !important;
+    }
+    
+    /* Adjust text sizes for mobile */
+    .bento-item h3 {
+        font-size: 1.3rem;
+    }
+    
+    .carousel-content h2 {
+        font-size: 1.6rem;
+    }
+    
+    /* Adjust carousel for mobile */
+    .carousel-image {
+        height: 50%;
+    }
+    
+    .carousel-dots {
+        bottom: 120px;
+        left: 25px;
+    }
+    
+    .read-time {
+        bottom: 25px;
+        right: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .bento-grid {
+        padding: 0 10px;
+        gap: 15px;
+    }
+    
+    .bento-item {
+        padding: 20px;
+    }
+}
+
+
+
+
+
+/* Desktop (original code - keep as is) */
+@media (min-width: 1201px) {
+    .bento-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        padding: 0;
+    }
+}
+
+
+
+/* Add this to the mobile media query */
+@media (max-width: 768px) {
+    .bento-container {
+        padding: 10px;
+    }
+    
+    /* Ensure bento grid takes full width on mobile */
+    .bento-grid {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+    }
+    
+    /* Add this to fix right-side sticking */
+    .bento-grid > * {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box;
+    }
+}
+
+
+
+/* For Medium Tablets (769px - 1024px) - ONLY fix problematic layouts */
+@media (max-width: 1024px) and (min-width: 769px) {
+    /* Fix ONLY Balanced, Asymmetrical, and Header Banner layouts */
+    .bento-grid.layout-balanced,
+    .bento-grid.layout-asymmetrical,
+    .bento-grid.layout-header-banner {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        grid-template-rows: auto !important;
+        grid-template-areas: none !important;
+        gap: 18px;
+        padding: 0 15px;
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    /* Reset items in THESE layouts only */
+    .bento-grid.layout-balanced .bento-item,
+    .bento-grid.layout-asymmetrical .bento-item,
+    .bento-grid.layout-header-banner .bento-item {
+        grid-column: span 1 !important;
+        grid-row: span 1 !important;
+        grid-area: unset !important;
+        margin: 0;
+        padding: 22px;
+        width: 100%;
+        height: auto;
+        min-height: 250px;
+        box-sizing: border-box;
+    }
+    
+    /* Make featured/large items span full width */
+    .bento-grid.layout-balanced .large-item,
+    .bento-grid.layout-asymmetrical .main-item,
+    .bento-grid.layout-header-banner .banner-item {
+        grid-column: 1 / -1 !important; /* Span all columns */
+        grid-row: span 2 !important;
+        min-height: 518px;
+    }
+    
+    /* Clear all specific area classes in THESE layouts only */
+    .bento-grid.layout-balanced [class*="small-"],
+    .bento-grid.layout-balanced [class*="medium-"],
+    .bento-grid.layout-asymmetrical [class*="side-"],
+    .bento-grid.layout-asymmetrical [class*="content-"],
+    .bento-grid.layout-asymmetrical [class*="small-"],
+    .bento-grid.layout-header-banner [class*="content-"] {
+        grid-column: span 1 !important;
+        grid-row: span 1 !important;
+        grid-area: unset !important;
+    }
+}
+
+/* For Large Tablets (1025px - 1200px) - ONLY fix problematic layouts */
+@media (max-width: 1200px) and (min-width: 1025px) {
+    /* Fix ONLY Balanced, Asymmetrical, and Header Banner layouts */
+    .bento-grid.layout-balanced,
+    .bento-grid.layout-asymmetrical,
+    .bento-grid.layout-header-banner {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        grid-template-rows: auto !important;
+        grid-template-areas: none !important;
+        gap: 20px;
+        padding: 0 20px;
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    /* Reset items in THESE layouts only */
+    .bento-grid.layout-balanced .bento-item,
+    .bento-grid.layout-asymmetrical .bento-item,
+    .bento-grid.layout-header-banner .bento-item {
+        grid-column: span 1 !important;
+        grid-row: span 1 !important;
+        grid-area: unset !important;
+        margin: 0;
+        padding: 25px;
+        width: 100%;
+        height: auto;
+        min-height: 260px;
+        box-sizing: border-box;
+    }
+    
+    /* Make featured/large items span 2 columns */
+    .bento-grid.layout-balanced .large-item,
+    .bento-grid.layout-asymmetrical .main-item,
+    .bento-grid.layout-header-banner .banner-item {
+        grid-column: span 2 !important;
+        grid-row: span 2 !important;
+        min-height: 540px;
+    }
+    
+    /* Clear all specific area classes in THESE layouts only */
+    .bento-grid.layout-balanced [class*="small-"],
+    .bento-grid.layout-balanced [class*="medium-"],
+    .bento-grid.layout-asymmetrical [class*="side-"],
+    .bento-grid.layout-asymmetrical [class*="content-"],
+    .bento-grid.layout-asymmetrical [class*="small-"],
+    .bento-grid.layout-header-banner [class*="content-"] {
+        grid-column: span 1 !important;
+        grid-row: span 1 !important;
+        grid-area: unset !important;
+    }
+}
+
+
+/* Pinterest Layout - Keep original tablet behavior */
+@media (max-width: 1200px) and (min-width: 1025px) {
+    /* Large tablets - Pinterest should keep its original layout */
+    .bento-grid.layout-pinterest {
+        /* Your original Pinterest code for large tablets */
+        grid-auto-rows: minmax(280px, auto);
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 20px;
+    }
+    
+    .bento-grid.layout-pinterest .bento-item.wide {
+        grid-column: span 1;
+    }
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+    /* Medium tablets - Pinterest should keep its original layout */
+    .bento-grid.layout-pinterest {
+        /* Your original Pinterest code for medium tablets */
+        grid-auto-rows: minmax(280px, auto);
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 20px;
+    }
+    
+    .bento-grid.layout-pinterest .bento-item.wide {
+        grid-column: span 1;
+    }
+}
+
+/* Utility Classes */
+.bento-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.bento-title {
+    font-size: 3rem;
+    font-weight: 300;
+    margin-bottom: 40px;
+    color: var(--bento-text-primary);
+}
+
+/* Add focus styles for accessibility */
+.bento-item:focus {
+    outline: 2px solid var(--bento-accent);
+    outline-offset: 2px;
+}
+
+/* Improve color contrast for accessibility */
+:root {
+    --bento-text-tertiary: #a0a0a0; /* Slightly brighter for better contrast */
+}
+
+/* Skeleton loading animation */
+.bento-item.skeleton {
+    background: linear-gradient(90deg, 
+        var(--bento-bg-secondary) 0%, 
+        var(--bento-bg-tertiary) 50%, 
+        var(--bento-bg-secondary) 100%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+@media (max-width: 768px) {
+    .bento-title {
+        font-size: 2rem;
+    }
+}  
+
+@supports not (display: grid) {
+    .bento-grid {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+    .bento-item {
+        flex: 1 0 300px;
+        margin: 10px;
+    }
+}

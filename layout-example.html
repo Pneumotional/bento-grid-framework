@@ -1,0 +1,1335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bento Grid - Layout Examples</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Bento Grid Framework CSS -->
+    <link rel="stylesheet" href="assets\css\bento-grid.css">
+    
+    <style>
+        /* Page-specific styles only */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            padding: 40px 20px;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            font-weight: 300;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            font-size: 1.1rem;
+            color: #888;
+        }
+
+        .example-section {
+            max-width: 1400px;
+            margin: 0 auto 80px;
+        }
+
+        .example-header {
+            margin-bottom: 20px;
+        }
+
+        .example-header h2 {
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+
+        .example-header p {
+            color: #888;
+            font-size: 0.95rem;
+        }
+
+        .code-box {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            margin-top: 30px;
+            overflow: hidden;
+        }
+
+        .code-header {
+            background: #2a2a2a;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333;
+        }
+
+        .code-header span {
+            font-size: 0.85rem;
+            color: #888;
+            font-weight: 500;
+        }
+
+        .copy-btn {
+            background: #3a3a3a;
+            border: none;
+            color: #fff;
+            padding: 6px 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.2s;
+        }
+
+        .copy-btn:hover {
+            background: #4a4a4a;
+        }
+
+        .copy-btn.copied {
+            background: #2ecc71;
+        }
+
+        .code-content {
+            padding: 20px;
+            overflow-x: auto;
+        }
+
+        .code-content pre {
+            margin: 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            color: #e0e0e0;
+        }
+
+        .divider {
+            height: 1px;
+            background: #2a2a2a;
+            margin: 60px auto;
+            max-width: 1400px;
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .example-header h2 {
+                font-size: 1.4rem;
+            }
+        }
+
+        /* Documentation Table Styles */
+        .doc-table-container {
+            overflow-x: auto;
+            background: #1a1a1a;
+            border-radius: 8px;
+            border: 1px solid #2a2a2a;
+            margin-top: 20px;
+        }
+
+        .doc-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        .doc-table thead {
+            background: #2a2a2a;
+            border-bottom: 2px solid #3a3a3a;
+        }
+
+        .doc-table th {
+            padding: 15px 20px;
+            text-align: left;
+            font-weight: 600;
+            color: #fff;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .doc-table td {
+            padding: 15px 20px;
+            border-bottom: 1px solid #252525;
+            color: #b0b0b0;
+            line-height: 1.6;
+        }
+
+        .doc-table tbody tr:hover {
+            background: #222;
+        }
+
+        .doc-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .doc-table code {
+            background: #2a2a2a;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            color: #66ff99;
+            white-space: nowrap;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        .badge-primary {
+            background: rgba(58, 90, 255, 0.2);
+            color: #5a7aff;
+            border: 1px solid rgba(58, 90, 255, 0.3);
+        }
+
+        .badge-success {
+            background: rgba(46, 204, 113, 0.2);
+            color: #2ecc71;
+            border: 1px solid rgba(46, 204, 113, 0.3);
+        }
+
+        .badge-warning {
+            background: rgba(255, 204, 0, 0.2);
+            color: #ffcc00;
+            border: 1px solid rgba(255, 204, 0, 0.3);
+        }
+
+        .badge-info {
+            background: rgba(52, 152, 219, 0.2);
+            color: #3498db;
+            border: 1px solid rgba(52, 152, 219, 0.3);
+        }
+
+        .badge-danger {
+            background: rgba(255, 107, 139, 0.2);
+            color: #ff6b8b;
+            border: 1px solid rgba(255, 107, 139, 0.3);
+        }
+
+        .badge-secondary {
+            background: rgba(136, 136, 136, 0.2);
+            color: #888;
+            border: 1px solid rgba(136, 136, 136, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .doc-table {
+                font-size: 0.8rem;
+            }
+
+            .doc-table th,
+            .doc-table td {
+                padding: 12px 15px;
+            }
+
+            .doc-table th {
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-header">
+        <h1>Bento Grid Layout Examples</h1>
+        <p>5 practical implementations showcasing different layout patterns</p>
+    </div>
+
+    <!-- Example 1: Simple Blog Grid -->
+    <div class="example-section">
+        <div class="example-header">
+            <h2><i class="fas fa-th"></i> Example 1: Simple Blog Grid</h2>
+            <p>Basic grid with uniform cards - perfect for blog posts and articles</p>
+        </div>
+        
+        <div class="bento-grid">
+            <div class="bento-item">
+                <span class="article-tag">Design</span>
+                <h3>Modern UI Trends 2025</h3>
+                <p>Exploring the latest design patterns that are shaping user experiences.</p>
+                <span class="read-time">4 min</span>
+            </div>
+
+            <div class="bento-item">
+                <span class="article-tag">Development</span>
+                <h3>CSS Grid Mastery</h3>
+                <p>Advanced techniques for creating flexible, responsive layouts.</p>
+                <span class="read-time">6 min</span>
+            </div>
+
+            <div class="bento-item">
+                <span class="article-tag">JavaScript</span>
+                <h3>Async Programming</h3>
+                <p>Understanding promises, async/await, and modern JS patterns.</p>
+                <span class="read-time">8 min</span>
+            </div>
+
+            <div class="bento-item">
+                <span class="article-tag">Performance</span>
+                <h3>Web Optimization</h3>
+                <p>Techniques to speed up your website and improve user experience.</p>
+                <span class="read-time">5 min</span>
+            </div>
+        </div>
+
+        <div class="code-box">
+            <div class="code-header">
+                <span>HTML Code</span>
+                <button class="copy-btn" onclick="copyCode(this, 'code1')">Copy</button>
+            </div>
+            <div class="code-content">
+                <pre id="code1"><code>&lt;div class="bento-grid"&gt;
+    &lt;div class="bento-item"&gt;
+        &lt;span class="article-tag"&gt;Design&lt;/span&gt;
+        &lt;h3&gt;Modern UI Trends 2025&lt;/h3&gt;
+        &lt;p&gt;Exploring the latest design patterns that are shaping user experiences.&lt;/p&gt;
+        &lt;span class="read-time"&gt;4 min&lt;/span&gt;
+    &lt;/div&gt;
+
+    &lt;div class="bento-item"&gt;
+        &lt;span class="article-tag"&gt;Development&lt;/span&gt;
+        &lt;h3&gt;CSS Grid Mastery&lt;/h3&gt;
+        &lt;p&gt;Advanced techniques for creating flexible, responsive layouts.&lt;/p&gt;
+        &lt;span class="read-time"&gt;6 min&lt;/span&gt;
+    &lt;/div&gt;
+    
+    &lt;!-- Add more items as needed --&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Example 2: Featured Content Grid -->
+    <div class="example-section">
+        <div class="example-header">
+            <h2><i class="fas fa-star"></i> Example 2: Featured Content with Carousel</h2>
+            <p>Highlight important content with a large featured carousel card</p>
+        </div>
+        
+        <div class="bento-grid">
+            <div class="bento-item featured">
+                <div class="carousel-container">
+                    <div class="carousel-slide active">
+                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=600&fit=crop" alt="Tech" class="carousel-image">
+                        <div class="carousel-content">
+                            <h2>Tech Innovation 2025</h2>
+                            <p>Breaking down the most exciting technological advances of the year.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-slide">
+                        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=600&fit=crop" alt="Space" class="carousel-image">
+                        <div class="carousel-content">
+                            <h2>Space Exploration</h2>
+                            <p>New missions and discoveries expanding our cosmic horizons.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-dots"></div>
+                </div>
+            </div>
+
+            <div class="bento-item">
+                <span class="article-tag">AI</span>
+                <h3>Machine Learning Basics</h3>
+                <p>Introduction to ML concepts and practical applications.</p>
+                <span class="read-time">7 min</span>
+            </div>
+
+            <div class="bento-item">
+                <span class="article-tag">Security</span>
+                <h3>Cybersecurity Essentials</h3>
+                <p>Protecting your digital assets in the modern world.</p>
+                <span class="read-time">5 min</span>
+            </div>
+        </div>
+
+        <div class="code-box">
+            <div class="code-header">
+                <span>HTML Code</span>
+                <button class="copy-btn" onclick="copyCode(this, 'code2')">Copy</button>
+            </div>
+            <div class="code-content">
+                <pre id="code2"><code>&lt;div class="bento-grid"&gt;
+    &lt;div class="bento-item featured"&gt;
+        &lt;div class="carousel-container"&gt;
+            &lt;div class="carousel-slide active"&gt;
+                &lt;img src="image1.jpg" alt="Tech" class="carousel-image"&gt;
+                &lt;div class="carousel-content"&gt;
+                    &lt;h2&gt;Tech Innovation 2025&lt;/h2&gt;
+                    &lt;p&gt;Breaking down the most exciting technological advances.&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            
+            &lt;div class="carousel-slide"&gt;
+                &lt;img src="image2.jpg" alt="Space" class="carousel-image"&gt;
+                &lt;div class="carousel-content"&gt;
+                    &lt;h2&gt;Space Exploration&lt;/h2&gt;
+                    &lt;p&gt;New missions expanding our cosmic horizons.&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            
+            &lt;div class="carousel-dots"&gt;&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class="bento-item"&gt;
+        &lt;span class="article-tag"&gt;AI&lt;/span&gt;
+        &lt;h3&gt;Machine Learning Basics&lt;/h3&gt;
+        &lt;p&gt;Introduction to ML concepts.&lt;/p&gt;
+        &lt;span class="read-time"&gt;7 min&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Example 3: Mixed Size Grid -->
+    <div class="example-section">
+        <div class="example-header">
+            <h2><i class="fas fa-grip-horizontal"></i> Example 3: Mixed Size Grid</h2>
+            <p>Combine different card sizes for visual hierarchy</p>
+        </div>
+        
+        <div class="bento-grid">
+            <div class="bento-item span-2">
+                <span class="article-tag">Featured</span>
+                <h3>The Future of Remote Work</h3>
+                <p>How distributed teams are reshaping modern business culture and productivity standards across industries worldwide.</p>
+                <span class="read-time">10 min</span>
+            </div>
+
+            <div class="bento-item">
+                <span class="article-tag">Business</span>
+                <h3>Startup Growth</h3>
+                <p>Strategies for scaling your business effectively.</p>
+                <span class="read-time">6 min</span>
+            </div>
+
+            <div class="bento-item">
+                <span class="article-tag">Marketing</span>
+                <h3>Content Strategy</h3>
+                <p>Building engaging content that converts.</p>
+                <span class="read-time">5 min</span>
+            </div>
+
+            <div class="bento-item row-2">
+                <span class="article-tag">Tutorial</span>
+                <h3>Complete React Guide</h3>
+                <p>From basics to advanced concepts, master React development with practical examples and real-world projects.</p>
+                <span class="read-time">15 min</span>
+            </div>
+
+            <div class="bento-item">
+                <span class="article-tag">Tools</span>
+                <h3>Developer Toolkit</h3>
+                <p>Essential tools every developer should know.</p>
+                <span class="read-time">4 min</span>
+            </div>
+        </div>
+
+        <div class="code-box">
+            <div class="code-header">
+                <span>HTML Code</span>
+                <button class="copy-btn" onclick="copyCode(this, 'code3')">Copy</button>
+            </div>
+            <div class="code-content">
+                <pre id="code3"><code>&lt;div class="bento-grid"&gt;
+    &lt;div class="bento-item span-2"&gt;
+        &lt;span class="article-tag"&gt;Featured&lt;/span&gt;
+        &lt;h3&gt;The Future of Remote Work&lt;/h3&gt;
+        &lt;p&gt;How distributed teams are reshaping modern business...&lt;/p&gt;
+        &lt;span class="read-time"&gt;10 min&lt;/span&gt;
+    &lt;/div&gt;
+
+    &lt;div class="bento-item"&gt;
+        &lt;span class="article-tag"&gt;Business&lt;/span&gt;
+        &lt;h3&gt;Startup Growth&lt;/h3&gt;
+        &lt;p&gt;Strategies for scaling your business.&lt;/p&gt;
+        &lt;span class="read-time"&gt;6 min&lt;/span&gt;
+    &lt;/div&gt;
+
+    &lt;div class="bento-item row-2"&gt;
+        &lt;span class="article-tag"&gt;Tutorial&lt;/span&gt;
+        &lt;h3&gt;Complete React Guide&lt;/h3&gt;
+        &lt;p&gt;From basics to advanced concepts...&lt;/p&gt;
+        &lt;span class="read-time"&gt;15 min&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Example 4: Pinterest Layout -->
+    <div class="example-section">
+        <div class="example-header">
+            <h2><i class="fas fa-border-all"></i> Example 4: Pinterest Style Layout</h2>
+            <p>Masonry-style grid with varying heights - perfect for image-heavy content</p>
+        </div>
+        
+        <div class="bento-grid layout-pinterest">
+            <div class="bento-item">
+                <span class="article-tag">Photography</span>
+                <h3>Landscape Tips</h3>
+                <p>Capture stunning outdoor scenes.</p>
+                <span class="read-time">3 min</span>
+            </div>
+
+            <div class="bento-item tall">
+                <span class="article-tag">Travel</span>
+                <h3>Hidden Gems of Europe</h3>
+                <p>Discover lesser-known destinations that offer authentic experiences away from tourist crowds. From medieval villages to pristine coastlines.</p>
+                <span class="read-time">12 min</span>
+            </div>
+
+            <div class="bento-item">
+                <span class="article-tag">Food</span>
+                <h3>Quick Recipes</h3>
+                <p>Delicious meals in under 30 minutes.</p>
+                <span class="read-time">4 min</span>
+            </div>
+
+            <div class="bento-item">
+                <span class="article-tag">Fitness</span>
+                <h3>Home Workouts</h3>
+                <p>Stay fit without a gym membership.</p>
+                <span class="read-time">5 min</span>
+            </div>
+
+            <div class="bento-item tall">
+                <span class="article-tag">Art</span>
+                <h3>Digital Art Masterclass</h3>
+                <p>Learn professional techniques for creating stunning digital artwork, from concept to final rendering.</p>
+                <span class="read-time">20 min</span>
+            </div>
+
+            <div class="bento-item">
+                <span class="article-tag">Music</span>
+                <h3>Music Production</h3>
+                <p>Start creating your own tracks today.</p>
+                <span class="read-time">6 min</span>
+            </div>
+        </div>
+
+        <div class="code-box">
+            <div class="code-header">
+                <span>HTML Code</span>
+                <button class="copy-btn" onclick="copyCode(this, 'code4')">Copy</button>
+            </div>
+            <div class="code-content">
+                <pre id="code4"><code>&lt;div class="bento-grid layout-pinterest"&gt;
+    &lt;div class="bento-item"&gt;
+        &lt;span class="article-tag"&gt;Photography&lt;/span&gt;
+        &lt;h3&gt;Landscape Tips&lt;/h3&gt;
+        &lt;p&gt;Capture stunning outdoor scenes.&lt;/p&gt;
+        &lt;span class="read-time"&gt;3 min&lt;/span&gt;
+    &lt;/div&gt;
+
+    &lt;div class="bento-item tall"&gt;
+        &lt;span class="article-tag"&gt;Travel&lt;/span&gt;
+        &lt;h3&gt;Hidden Gems of Europe&lt;/h3&gt;
+        &lt;p&gt;Discover lesser-known destinations...&lt;/p&gt;
+        &lt;span class="read-time"&gt;12 min&lt;/span&gt;
+    &lt;/div&gt;
+
+    &lt;div class="bento-item"&gt;
+        &lt;span class="article-tag"&gt;Food&lt;/span&gt;
+        &lt;h3&gt;Quick Recipes&lt;/h3&gt;
+        &lt;p&gt;Delicious meals in under 30 minutes.&lt;/p&gt;
+        &lt;span class="read-time"&gt;4 min&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Example 5: Header Banner Layout -->
+    <div class="example-section">
+        <div class="example-header">
+            <h2><i class="fas fa-window-maximize"></i> Example 5: Header Banner Layout</h2>
+            <p>Large banner on top with smaller cards below - great for landing pages</p>
+        </div>
+        
+        <div class="bento-grid layout-header-banner">
+            <div class="bento-item banner-item">
+                <span class="article-tag">Announcement</span>
+                <h3 style="font-size: 2rem; margin-top: 20px;">New Product Launch: BentoUI 2.0</h3>
+                <p style="font-size: 1.1rem; margin-top: 15px;">Experience the next generation of design systems with enhanced features, better performance, and unlimited possibilities for modern web applications.</p>
+                <span class="read-time">Featured</span>
+            </div>
+
+            <div class="bento-item content-1">
+                <span class="article-tag">Features</span>
+                <h3>Advanced Grid System</h3>
+                <p>Powerful layout options at your fingertips.</p>
+                <span class="read-time">3 min</span>
+            </div>
+
+            <div class="bento-item content-2">
+                <span class="article-tag">Updates</span>
+                <h3>What's New</h3>
+                <p>Latest improvements and bug fixes.</p>
+                <span class="read-time">2 min</span>
+            </div>
+
+            <div class="bento-item content-3">
+                <span class="article-tag">Docs</span>
+                <h3>Documentation</h3>
+                <p>Complete guide to all features.</p>
+                <span class="read-time">15 min</span>
+            </div>
+
+            <div class="bento-item content-4">
+                <span class="article-tag">Tutorial</span>
+                <h3>Getting Started</h3>
+                <p>Quick start guide for beginners.</p>
+                <span class="read-time">5 min</span>
+            </div>
+
+            <div class="bento-item content-5">
+                <span class="article-tag">Examples</span>
+                <h3>Live Demos</h3>
+                <p>See it in action with real examples.</p>
+                <span class="read-time">10 min</span>
+            </div>
+
+            <div class="bento-item content-6">
+                <span class="article-tag">Community</span>
+                <h3>Join Discord</h3>
+                <p>Connect with other developers.</p>
+                <span class="read-time">1 min</span>
+            </div>
+        </div>
+
+        <div class="code-box">
+            <div class="code-header">
+                <span>HTML Code</span>
+                <button class="copy-btn" onclick="copyCode(this, 'code5')">Copy</button>
+            </div>
+            <div class="code-content">
+                <pre id="code5"><code>&lt;div class="bento-grid layout-header-banner"&gt;
+    &lt;div class="bento-item banner-item"&gt;
+        &lt;span class="article-tag"&gt;Announcement&lt;/span&gt;
+        &lt;h3 style="font-size: 2rem;"&gt;New Product Launch: BentoUI 2.0&lt;/h3&gt;
+        &lt;p style="font-size: 1.1rem;"&gt;Experience the next generation of design systems...&lt;/p&gt;
+        &lt;span class="read-time"&gt;Featured&lt;/span&gt;
+    &lt;/div&gt;
+
+    &lt;div class="bento-item content-1"&gt;
+        &lt;span class="article-tag"&gt;Features&lt;/span&gt;
+        &lt;h3&gt;Advanced Grid System&lt;/h3&gt;
+        &lt;p&gt;Powerful layout options at your fingertips.&lt;/p&gt;
+        &lt;span class="read-time"&gt;3 min&lt;/span&gt;
+    &lt;/div&gt;
+
+    &lt;div class="bento-item content-2"&gt;
+        &lt;span class="article-tag"&gt;Updates&lt;/span&gt;
+        &lt;h3&gt;What's New&lt;/h3&gt;
+        &lt;p&gt;Latest improvements and bug fixes.&lt;/p&gt;
+        &lt;span class="read-time"&gt;2 min&lt;/span&gt;
+    &lt;/div&gt;
+    
+    &lt;!-- Add content-3 through content-6 similarly --&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Documentation Table Section -->
+    <div class="example-section">
+        <div class="example-header">
+            <h2><i class="fas fa-book"></i> Class Reference Documentation</h2>
+            <p>Complete guide to all available classes and their usage</p>
+        </div>
+
+        <div class="doc-table-container">
+            <table class="doc-table">
+                <thead>
+                    <tr>
+                        <th>Class Name</th>
+                        <th>Category</th>
+                        <th>Description</th>
+                        <th>Use Case</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Grid Container Classes -->
+                    <tr>
+                        <td><code>.bento-grid</code></td>
+                        <td><span class="badge badge-primary">Container</span></td>
+                        <td>Main grid container with auto-fit columns</td>
+                        <td>Required wrapper for all bento layouts</td>
+                    </tr>
+                    <tr>
+                        <td><code>.bento-container</code></td>
+                        <td><span class="badge badge-primary">Container</span></td>
+                        <td>Max-width container with padding</td>
+                        <td>Optional outer wrapper for centered layouts</td>
+                    </tr>
+
+                    <!-- Item Classes -->
+                    <tr>
+                        <td><code>.bento-item</code></td>
+                        <td><span class="badge badge-success">Item</span></td>
+                        <td>Individual grid card/tile</td>
+                        <td>Required for each content card in the grid</td>
+                    </tr>
+                    <tr>
+                        <td><code>.featured</code></td>
+                        <td><span class="badge badge-success">Item</span></td>
+                        <td>Large featured card (2×2 grid span)</td>
+                        <td>Highlight main content or carousel items</td>
+                    </tr>
+
+                    <!-- Size Modifier Classes -->
+                    <tr>
+                        <td><code>.span-2</code></td>
+                        <td><span class="badge badge-warning">Modifier</span></td>
+                        <td>Spans 2 columns horizontally</td>
+                        <td>Wide cards for longer titles/content</td>
+                    </tr>
+                    <tr>
+                        <td><code>.span-3</code></td>
+                        <td><span class="badge badge-warning">Modifier</span></td>
+                        <td>Spans 3 columns horizontally</td>
+                        <td>Extra-wide featured content</td>
+                    </tr>
+                    <tr>
+                        <td><code>.row-2</code></td>
+                        <td><span class="badge badge-warning">Modifier</span></td>
+                        <td>Spans 2 rows vertically</td>
+                        <td>Tall cards with more content space</td>
+                    </tr>
+                    <tr>
+                        <td><code>.row-3</code></td>
+                        <td><span class="badge badge-warning">Modifier</span></td>
+                        <td>Spans 3 rows vertically</td>
+                        <td>Extra-tall cards for extensive content</td>
+                    </tr>
+
+                    <!-- Layout Classes -->
+                    <tr>
+                        <td><code>.layout-pinterest</code></td>
+                        <td><span class="badge badge-info">Layout</span></td>
+                        <td>Masonry-style grid with varying heights</td>
+                        <td>Image galleries, portfolios, visual content</td>
+                    </tr>
+                    <tr>
+                        <td><code>.layout-header-banner</code></td>
+                        <td><span class="badge badge-info">Layout</span></td>
+                        <td>Large banner top + 6 smaller cards below</td>
+                        <td>Landing pages, announcements, hero sections</td>
+                    </tr>
+                    <tr>
+                        <td><code>.layout-balanced</code></td>
+                        <td><span class="badge badge-info">Layout</span></td>
+                        <td>Symmetrical 4-column layout with featured item</td>
+                        <td>Balanced content presentation, dashboards</td>
+                    </tr>
+                    <tr>
+                        <td><code>.layout-asymmetrical</code></td>
+                        <td><span class="badge badge-info">Layout</span></td>
+                        <td>5-column layout with 3×2 main item</td>
+                        <td>Dynamic layouts, editorial content</td>
+                    </tr>
+
+                    <!-- Pinterest Specific -->
+                    <tr>
+                        <td><code>.tall</code></td>
+                        <td><span class="badge badge-warning">Pinterest</span></td>
+                        <td>Doubles card height (spans 2 rows)</td>
+                        <td>Use within .layout-pinterest for taller cards</td>
+                    </tr>
+                    <tr>
+                        <td><code>.wide</code></td>
+                        <td><span class="badge badge-warning">Pinterest</span></td>
+                        <td>Doubles card width (spans 2 columns)</td>
+                        <td>Use within .layout-pinterest for wider cards</td>
+                    </tr>
+
+                    <!-- Header Banner Specific -->
+                    <tr>
+                        <td><code>.banner-item</code></td>
+                        <td><span class="badge badge-warning">Banner</span></td>
+                        <td>Full-width banner at top of layout</td>
+                        <td>Use within .layout-header-banner for hero</td>
+                    </tr>
+                    <tr>
+                        <td><code>.content-1</code> to <code>.content-6</code></td>
+                        <td><span class="badge badge-warning">Banner</span></td>
+                        <td>Positioned cards in header banner layout</td>
+                        <td>Use within .layout-header-banner for cards</td>
+                    </tr>
+
+                    <!-- Balanced Grid Specific -->
+                    <tr>
+                        <td><code>.large-item</code></td>
+                        <td><span class="badge badge-warning">Balanced</span></td>
+                        <td>2×2 featured card in balanced layout</td>
+                        <td>Use within .layout-balanced for main feature</td>
+                    </tr>
+                    <tr>
+                        <td><code>.medium-1</code> to <code>.medium-4</code></td>
+                        <td><span class="badge badge-warning">Balanced</span></td>
+                        <td>Medium-sized cards in balanced layout</td>
+                        <td>Use within .layout-balanced for secondary content</td>
+                    </tr>
+                    <tr>
+                        <td><code>.small-1</code> to <code>.small-4</code></td>
+                        <td><span class="badge badge-warning">Balanced</span></td>
+                        <td>Small cards in balanced layout</td>
+                        <td>Use within .layout-balanced for tertiary content</td>
+                    </tr>
+
+                    <!-- Asymmetrical Specific -->
+                    <tr>
+                        <td><code>.main-item</code></td>
+                        <td><span class="badge badge-warning">Asymmetric</span></td>
+                        <td>3×2 main featured card</td>
+                        <td>Use within .layout-asymmetrical for hero</td>
+                    </tr>
+                    <tr>
+                        <td><code>.side-1</code>, <code>.side-2</code></td>
+                        <td><span class="badge badge-warning">Asymmetric</span></td>
+                        <td>Sidebar cards in asymmetrical layout</td>
+                        <td>Use within .layout-asymmetrical for side content</td>
+                    </tr>
+
+                    <!-- Content Component Classes -->
+                    <tr>
+                        <td><code>.article-tag</code></td>
+                        <td><span class="badge badge-danger">Component</span></td>
+                        <td>Category/tag badge for cards</td>
+                        <td>Label content categories</td>
+                    </tr>
+                    <tr>
+                        <td><code>.read-time</code></td>
+                        <td><span class="badge badge-danger">Component</span></td>
+                        <td>Reading time indicator (bottom-right)</td>
+                        <td>Display estimated reading duration</td>
+                    </tr>
+
+                    <!-- Carousel Classes -->
+                    <tr>
+                        <td><code>.carousel-container</code></td>
+                        <td><span class="badge badge-danger">Carousel</span></td>
+                        <td>Wrapper for carousel slides</td>
+                        <td>Required container for carousel functionality</td>
+                    </tr>
+                    <tr>
+                        <td><code>.carousel-slide</code></td>
+                        <td><span class="badge badge-danger">Carousel</span></td>
+                        <td>Individual slide within carousel</td>
+                        <td>Each content slide in the carousel</td>
+                    </tr>
+                    <tr>
+                        <td><code>.carousel-image</code></td>
+                        <td><span class="badge badge-danger">Carousel</span></td>
+                        <td>Image within carousel slide</td>
+                        <td>Display images in carousel slides</td>
+                    </tr>
+                    <tr>
+                        <td><code>.carousel-content</code></td>
+                        <td><span class="badge badge-danger">Carousel</span></td>
+                        <td>Text content wrapper in carousel</td>
+                        <td>Contains title and description</td>
+                    </tr>
+                    <tr>
+                        <td><code>.carousel-dots</code></td>
+                        <td><span class="badge badge-danger">Carousel</span></td>
+                        <td>Dot navigation container</td>
+                        <td>Auto-generated by JS for navigation</td>
+                    </tr>
+                    <tr>
+                        <td><code>.dot</code></td>
+                        <td><span class="badge badge-danger">Carousel</span></td>
+                        <td>Individual navigation dot</td>
+                        <td>Auto-generated for each slide</td>
+                    </tr>
+                    <tr>
+                        <td><code>.active</code></td>
+                        <td><span class="badge badge-danger">Carousel</span></td>
+                        <td>Currently visible slide/dot</td>
+                        <td>Managed automatically by framework JS</td>
+                    </tr>
+
+                    <!-- Utility Classes -->
+                    <tr>
+                        <td><code>.bento-title</code></td>
+                        <td><span class="badge badge-secondary">Utility</span></td>
+                        <td>Large page title styling</td>
+                        <td>Main headings above grid sections</td>
+                    </tr>
+                    <tr>
+                        <td><code>.skeleton</code></td>
+                        <td><span class="badge badge-secondary">Utility</span></td>
+                        <td>Loading skeleton animation</td>
+                        <td>Placeholder while content loads</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div style="margin-top: 40px; padding: 25px; background: #1a1a1a; border-radius: 8px; border: 1px solid #2a2a2a;">
+            <h3 style="margin-bottom: 15px; font-size: 1.3rem;"><i class="fas fa-lightbulb"></i> Usage Tips</h3>
+            <ul style="color: #b0b0b0; line-height: 2; list-style: none; padding: 0;">
+                <li><i class="fas fa-check" style="color: #2ecc71; margin-right: 10px;"></i> Always start with <code>.bento-grid</code> as your container</li>
+                <li><i class="fas fa-check" style="color: #2ecc71; margin-right: 10px;"></i> Each card must have the <code>.bento-item</code> class</li>
+                <li><i class="fas fa-check" style="color: #2ecc71; margin-right: 10px;"></i> Combine modifiers like <code>span-2 row-2</code> for custom sizes</li>
+                <li><i class="fas fa-check" style="color: #2ecc71; margin-right: 10px;"></i> Layout classes go on the <code>.bento-grid</code>, not individual items</li>
+                <li><i class="fas fa-check" style="color: #2ecc71; margin-right: 10px;"></i> Carousel requires the <code>.featured</code> class on the item</li>
+                <li><i class="fas fa-check" style="color: #2ecc71; margin-right: 10px;"></i> All layouts are fully responsive by default</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Customization Section -->
+    <div class="example-section">
+        <div class="example-header">
+            <h2><i class="fas fa-palette"></i> Customization Guide</h2>
+            <p>Override CSS variables and utility classes to customize the framework to your brand</p>
+        </div>
+
+        <h3 style="margin-top: 30px; margin-bottom: 15px;">CSS Variables (Custom Properties)</h3>
+        <p style="margin-bottom: 20px;">The framework uses CSS variables defined in <code>:root</code>. Override these in your custom CSS to change colors, spacing, and more:</p>
+
+        <div class="doc-table-container">
+            <table class="doc-table">
+                <thead>
+                    <tr>
+                        <th>Variable</th>
+                        <th>Default Value</th>
+                        <th>Description</th>
+                        <th>Affects</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Color Variables -->
+                    <tr>
+                        <td><code>--bento-bg-primary</code></td>
+                        <td><code>#0a0a0a</code></td>
+                        <td>Main background color</td>
+                        <td>Body background</td>
+                    </tr>
+                    <tr>
+                        <td><code>--bento-bg-secondary</code></td>
+                        <td><code>#1a1a1a</code></td>
+                        <td>Card background color</td>
+                        <td>All .bento-item backgrounds</td>
+                    </tr>
+                    <tr>
+                        <td><code>--bento-bg-tertiary</code></td>
+                        <td><code>#2a2a2a</code></td>
+                        <td>Accent background color</td>
+                        <td>Tags, dots, hover states</td>
+                    </tr>
+                    <tr>
+                        <td><code>--bento-text-primary</code></td>
+                        <td><code>#ffffff</code></td>
+                        <td>Primary text color</td>
+                        <td>Headings, titles</td>
+                    </tr>
+                    <tr>
+                        <td><code>--bento-text-secondary</code></td>
+                        <td><code>#e0e0e0</code></td>
+                        <td>Secondary text color</td>
+                        <td>Body text, descriptions</td>
+                    </tr>
+                    <tr>
+                        <td><code>--bento-text-tertiary</code></td>
+                        <td><code>#888</code></td>
+                        <td>Tertiary text color</td>
+                        <td>Tags, metadata, read-time</td>
+                    </tr>
+                    <tr>
+                        <td><code>--bento-accent</code></td>
+                        <td><code>#3a3a3a</code></td>
+                        <td>Accent color for interactions</td>
+                        <td>Hover borders, focus states</td>
+                    </tr>
+                    <tr>
+                        <td><code>--bento-border</code></td>
+                        <td><code>#2a2a2a</code></td>
+                        <td>Border color</td>
+                        <td>All card borders</td>
+                    </tr>
+
+                    <!-- Spacing & Layout Variables -->
+                    <tr>
+                        <td><code>--bento-radius</code></td>
+                        <td><code>10px</code></td>
+                        <td>Border radius for cards</td>
+                        <td>All .bento-item corners</td>
+                    </tr>
+                    <tr>
+                        <td><code>--bento-transition</code></td>
+                        <td><code>all 0.3s ease</code></td>
+                        <td>Default transition timing</td>
+                        <td>Hover effects, animations</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3 style="margin-top: 40px; margin-bottom: 15px;">How to Override Variables</h3>
+        <p style="margin-bottom: 20px;">Add this CSS to your custom stylesheet (after importing bento-grid.css):</p>
+
+        <div class="code-box">
+            <div class="code-header">
+                <span>Custom CSS Example</span>
+                <button class="copy-btn" onclick="copyCode(this, 'custom-vars')">Copy</button>
+            </div>
+            <div class="code-content">
+                <pre id="custom-vars"><code>/* Your custom styles.css */
+:root {
+    /* Change to blue theme */
+    --bento-bg-primary: #0a0e1a;
+    --bento-bg-secondary: #1a1f2e;
+    --bento-bg-tertiary: #2a3142;
+    --bento-accent: #3a5aff;
+    --bento-border: #2a3142;
+    
+    /* Rounder corners */
+    --bento-radius: 20px;
+    
+    /* Lighter text */
+    --bento-text-tertiary: #a0a0a0;
+    
+    /* Faster transitions */
+    --bento-transition: all 0.2s ease;
+}</code></pre>
+            </div>
+        </div>
+
+        <div class="code-box" style="margin-top: 20px;">
+            <div class="code-header">
+                <span>Light Theme Example</span>
+                <button class="copy-btn" onclick="copyCode(this, 'light-theme')">Copy</button>
+            </div>
+            <div class="code-content">
+                <pre id="light-theme"><code>/* Light theme override */
+:root {
+    --bento-bg-primary: #f5f5f5;
+    --bento-bg-secondary: #ffffff;
+    --bento-bg-tertiary: #f0f0f0;
+    --bento-text-primary: #1a1a1a;
+    --bento-text-secondary: #333333;
+    --bento-text-tertiary: #666666;
+    --bento-accent: #e0e0e0;
+    --bento-border: #e0e0e0;
+}</code></pre>
+            </div>
+        </div>
+
+        <h3 style="margin-top: 50px; margin-bottom: 15px;">Utility Override Classes</h3>
+        <p style="margin-bottom: 20px;">Add these utility classes to individual items for quick customization without touching the framework:</p>
+
+        <div class="doc-table-container">
+            <table class="doc-table">
+                <thead>
+                    <tr>
+                        <th>Utility Class</th>
+                        <th>CSS Code</th>
+                        <th>Purpose</th>
+                        <th>Example Usage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Background Utilities -->
+                    <tr>
+                        <td><code>.bg-gradient</code></td>
+                        <td><code>background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);</code></td>
+                        <td>Gradient background</td>
+                        <td>Featured cards, hero sections</td>
+                    </tr>
+                    <tr>
+                        <td><code>.bg-dark</code></td>
+                        <td><code>background: #0a0a0a;</code></td>
+                        <td>Darker background</td>
+                        <td>Emphasis cards</td>
+                    </tr>
+                    <tr>
+                        <td><code>.bg-light</code></td>
+                        <td><code>background: #2a2a2a;</code></td>
+                        <td>Lighter background</td>
+                        <td>Secondary cards</td>
+                    </tr>
+
+                    <!-- Border Utilities -->
+                    <tr>
+                        <td><code>.border-accent</code></td>
+                        <td><code>border: 2px solid var(--bento-accent);</code></td>
+                        <td>Accent border</td>
+                        <td>Highlighted cards</td>
+                    </tr>
+                    <tr>
+                        <td><code>.border-none</code></td>
+                        <td><code>border: none;</code></td>
+                        <td>Remove border</td>
+                        <td>Seamless cards</td>
+                    </tr>
+                    <tr>
+                        <td><code>.rounded-none</code></td>
+                        <td><code>border-radius: 0;</code></td>
+                        <td>Square corners</td>
+                        <td>Sharp design aesthetic</td>
+                    </tr>
+                    <tr>
+                        <td><code>.rounded-lg</code></td>
+                        <td><code>border-radius: 20px;</code></td>
+                        <td>Extra round corners</td>
+                        <td>Softer design aesthetic</td>
+                    </tr>
+
+                    <!-- Padding Utilities -->
+                    <tr>
+                        <td><code>.p-small</code></td>
+                        <td><code>padding: 20px;</code></td>
+                        <td>Reduced padding</td>
+                        <td>Compact cards</td>
+                    </tr>
+                    <tr>
+                        <td><code>.p-large</code></td>
+                        <td><code>padding: 40px;</code></td>
+                        <td>Extra padding</td>
+                        <td>Spacious cards</td>
+                    </tr>
+
+                    <!-- Shadow Utilities -->
+                    <tr>
+                        <td><code>.shadow-sm</code></td>
+                        <td><code>box-shadow: 0 2px 8px rgba(0,0,0,0.2);</code></td>
+                        <td>Small shadow</td>
+                        <td>Subtle elevation</td>
+                    </tr>
+                    <tr>
+                        <td><code>.shadow-lg</code></td>
+                        <td><code>box-shadow: 0 20px 60px rgba(0,0,0,0.5);</code></td>
+                        <td>Large shadow</td>
+                        <td>Strong elevation</td>
+                    </tr>
+                    <tr>
+                        <td><code>.shadow-none</code></td>
+                        <td><code>box-shadow: none;</code></td>
+                        <td>Remove shadow</td>
+                        <td>Flat design</td>
+                    </tr>
+
+                    <!-- Hover Utilities -->
+                    <tr>
+                        <td><code>.hover-lift</code></td>
+                        <td><code>transform: translateY(-8px) on hover;</code></td>
+                        <td>More lift on hover</td>
+                        <td>Emphasized interaction</td>
+                    </tr>
+                    <tr>
+                        <td><code>.hover-scale</code></td>
+                        <td><code>transform: scale(1.02) on hover;</code></td>
+                        <td>Scale up on hover</td>
+                        <td>Alternative hover effect</td>
+                    </tr>
+                    <tr>
+                        <td><code>.no-hover</code></td>
+                        <td><code>transform: none; pointer-events: none;</code></td>
+                        <td>Disable hover effects</td>
+                        <td>Static display cards</td>
+                    </tr>
+
+                    <!-- Text Utilities -->
+                    <tr>
+                        <td><code>.text-center</code></td>
+                        <td><code>text-align: center;</code></td>
+                        <td>Center align text</td>
+                        <td>Centered content cards</td>
+                    </tr>
+                    <tr>
+                        <td><code>.text-right</code></td>
+                        <td><code>text-align: right;</code></td>
+                        <td>Right align text</td>
+                        <td>RTL layouts</td>
+                    </tr>
+
+                    <!-- Opacity Utilities -->
+                    <tr>
+                        <td><code>.opacity-50</code></td>
+                        <td><code>opacity: 0.5;</code></td>
+                        <td>Half opacity</td>
+                        <td>Disabled or inactive cards</td>
+                    </tr>
+                    <tr>
+                        <td><code>.opacity-75</code></td>
+                        <td><code>opacity: 0.75;</code></td>
+                        <td>Reduced opacity</td>
+                        <td>Secondary emphasis</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3 style="margin-top: 40px; margin-bottom: 15px;">Add Utility Classes to Your CSS</h3>
+        <p style="margin-bottom: 20px;">Copy and paste these utility classes into your custom stylesheet:</p>
+
+        <div class="code-box">
+            <div class="code-header">
+                <span>Utility Classes CSS</span>
+                <button class="copy-btn" onclick="copyCode(this, 'utility-css')">Copy</button>
+            </div>
+            <div class="code-content">
+                <pre id="utility-css"><code>/* Utility Classes - Add to your custom CSS */
+
+/* Background Utilities */
+.bg-gradient { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+.bg-dark { background: #0a0a0a; }
+.bg-light { background: #2a2a2a; }
+
+/* Border Utilities */
+.border-accent { border: 2px solid var(--bento-accent); }
+.border-none { border: none; }
+.rounded-none { border-radius: 0; }
+.rounded-lg { border-radius: 20px; }
+
+/* Padding Utilities */
+.p-small { padding: 20px; }
+.p-large { padding: 40px; }
+
+/* Shadow Utilities */
+.shadow-sm { box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+.shadow-lg { box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+.shadow-none { box-shadow: none; }
+
+/* Hover Utilities */
+.hover-lift:hover { transform: translateY(-8px) !important; }
+.hover-scale:hover { transform: scale(1.02) !important; }
+.no-hover { transform: none !important; pointer-events: none; cursor: default; }
+.no-hover:hover { transform: none !important; box-shadow: none !important; }
+
+/* Text Utilities */
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+
+/* Opacity Utilities */
+.opacity-50 { opacity: 0.5; }
+.opacity-75 { opacity: 0.75; }</code></pre>
+            </div>
+        </div>
+
+        <h3 style="margin-top: 40px; margin-bottom: 15px;">Usage Example</h3>
+        <p style="margin-bottom: 20px;">Combine utility classes with bento classes for custom styling:</p>
+
+        <div class="code-box">
+            <div class="code-header">
+                <span>HTML with Utility Classes</span>
+                <button class="copy-btn" onclick="copyCode(this, 'utility-example')">Copy</button>
+            </div>
+            <div class="code-content">
+                <pre id="utility-example"><code>&lt;div class="bento-grid"&gt;
+    &lt;!-- Card with gradient background and large shadow --&gt;
+    &lt;div class="bento-item span-2 bg-gradient shadow-lg"&gt;
+        &lt;span class="article-tag"&gt;Premium&lt;/span&gt;
+        &lt;h3&gt;Featured Content&lt;/h3&gt;
+        &lt;p&gt;This card stands out with custom styling.&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Card with no border and extra padding --&gt;
+    &lt;div class="bento-item border-none p-large"&gt;
+        &lt;span class="article-tag"&gt;Design&lt;/span&gt;
+        &lt;h3&gt;Spacious Layout&lt;/h3&gt;
+        &lt;p&gt;More room for content.&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Centered text card with custom hover --&gt;
+    &lt;div class="bento-item text-center hover-scale rounded-lg"&gt;
+        &lt;span class="article-tag"&gt;Special&lt;/span&gt;
+        &lt;h3&gt;Centered Content&lt;/h3&gt;
+        &lt;p&gt;Everything is centered with scale hover.&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Disabled/inactive card --&gt;
+    &lt;div class="bento-item no-hover opacity-50"&gt;
+        &lt;span class="article-tag"&gt;Coming Soon&lt;/span&gt;
+        &lt;h3&gt;Inactive Card&lt;/h3&gt;
+        &lt;p&gt;This content is not yet available.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+        </div>
+
+        <div style="margin-top: 40px; padding: 25px; background: #1a1a1a; border-radius: 8px; border: 1px solid #2a2a2a;">
+            <h3 style="margin-bottom: 15px; font-size: 1.3rem;"><i class="fas fa-info-circle"></i> Customization Best Practices</h3>
+            <ul style="color: #b0b0b0; line-height: 2; list-style: none; padding: 0;">
+                <li><i class="fas fa-check" style="color: #2ecc71; margin-right: 10px;"></i> Override CSS variables in a separate <code>custom.css</code> file loaded after the framework</li>
+                <li><i class="fas fa-check" style="color: #2ecc71; margin-right: 10px;"></i> Test color contrast for accessibility (WCAG 2.1 AA standards)</li>
+                <li><i class="fas fa-check" style="color: #2ecc71; margin-right: 10px;"></i> Keep border-radius consistent across your design system</li>
+                <li><i class="fas fa-check" style="color: #2ecc71; margin-right: 10px;"></i> Use utility classes sparingly - create custom classes for repeated patterns</li>
+                <li><i class="fas fa-check" style="color: #2ecc71; margin-right: 10px;"></i> Document your custom variables and utilities for team collaboration</li>
+                <li><i class="fas fa-check" style="color: #2ecc71; margin-right: 10px;"></i> Preview changes across all layouts before deploying</li>
+            </ul>
+        </div>
+    </div>
+
+    <div style="text-align: center; margin: 80px 0 40px; color: #666;">
+        <p>Built with Bento Grid Framework • All layouts are fully responsive</p>
+    </div>
+
+    <!-- Bento Grid Framework JavaScript -->
+    <script src="assets\js\bento-grid.js"></script>
+    
+    <script>
+        // Copy code functionality
+        function copyCode(button, codeId) {
+            const codeElement = document.getElementById(codeId);
+            const textArea = document.createElement('textarea');
+            textArea.value = codeElement.textContent;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+            
+            // Visual feedback
+            button.textContent = 'Copied!';
+            button.classList.add('copied');
+            alert("The codes are not full so have fun completing it")
+            
+            setTimeout(() => {
+                button.textContent = 'Copy';
+                button.classList.remove('copied');
+            }, 2000);
+        }
+    </script>
+</body>
+</html>

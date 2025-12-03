@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bento Grid - CSS Framework</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #1a1a1a;
+            --bg-tertiary: #2a2a2a;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0b0;
+            --text-tertiary: #666666;
+            --accent: #3a3a3a;
+            --border: #333333;
+            --radius: 0px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: var(--bg-secondary);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--text-secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 4rem 0;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 3rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            padding: 0.8rem 1.5rem;
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-weight: 500;
+            border: 1px solid var(--border);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background: #3a5aff;
+            border-color: #3a5aff;
+        }
+
+        .btn-primary:hover {
+            background: #2a4aef;
+        }
+
+        /* Section Styling */
+        section {
+            margin-bottom: 4rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        section:last-child {
+            border-bottom: none;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        h2 i {
+            color: var(--text-secondary);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin: 2rem 0 1rem;
+            color: var(--text-primary);
+        }
+
+        p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Code Preview */
+        .code-preview {
+            background: var(--bg-secondary);
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .preview-header {
+            padding: 1rem 1.5rem;
+            background: var(--bg-tertiary);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .preview-title {
+            font-weight: 500;
+        }
+
+        .preview-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .preview-body {
+            padding: 2rem;
+            min-height: 200px;
+        }
+
+        .code-container {
+            background: var(--bg-primary);
+            border-radius: var(--radius);
+            overflow: hidden;
+            margin-top: 1rem;
+        }
+
+        .code-header {
+            padding: 0.75rem 1.5rem;
+            background: var(--bg-tertiary);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .code-content {
+            padding: 1.5rem;
+            overflow-x: auto;
+        }
+
+        pre {
+            margin: 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        code {
+            color: #e0e0e0;
+        }
+
+        .token.tag {
+            color: #ff6b8b;
+        }
+
+        .token.attr-name {
+            color: #ffcc00;
+        }
+
+        .token.attr-value {
+            color: #66ff99;
+        }
+
+        .token.comment {
+            color: #888;
+        }
+
+        /* Layout Styles Grid */
+        .layout-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .layout-card {
+            background: var(--bg-secondary);
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .layout-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .layout-preview {
+            height: 200px;
+            background: var(--bg-tertiary);
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(4, 1fr);
+            gap: 4px;
+            padding: 1rem;
+        }
+
+        .layout-preview > div {
+            background: var(--accent);
+            border-radius: 4px;
+        }
+
+        .layout-info {
+            padding: 1.5rem;
+        }
+
+        .layout-name {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .layout-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-secondary);
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            margin-top: 4rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1.5rem 0;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .copyright {
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .layout-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Bento Component Styles - EXACTLY matching your original */
+        .bento-item {
+            background: #1a1a1a;
+            border-radius: 16px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #2a2a2a;
+            min-height: 280px;
+        }
+
+        .bento-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border-color: #3a3a3a;
+        }
+
+        .bento-item.featured {
+            grid-column: span 2;
+            grid-row: span 2;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+        }
+
+        .article-tag {
+            display: inline-block;
+            padding: 6px 12px;
+            background: #2a2a2a;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin-bottom: 15px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .bento-item h3 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .bento-item p {
+            font-size: 0.9rem;
+            color: #888;
+            line-height: 1.6;
+        }
+
+        .read-time {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        /* Carousel Styles - EXACTLY matching your original */
+        .carousel-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .carousel-slide {
+            display: none;
+            height: 100%;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .carousel-slide.active {
+            display: flex;
+        }
+
+        .carousel-image {
+            width: 100%;
+            height: 60%;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .carousel-content h2 {
+            font-size: 1.8rem;
+            font-weight: 500;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .carousel-content p {
+            font-size: 0.95rem;
+            color: #b0b0b0;
+            line-height: 1.5;
+        }
+
+        .carousel-dots {
+            position: absolute;
+            bottom: 170px;
+            left: 30px;
+            display: flex;
+            gap: 8px;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #4a4a4a;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: #fff;
+            width: 24px;
+            border-radius: 4px;
+        }
+
+        /* Demo Grid */
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            grid-auto-rows: 280px;
+        }
+
+        .demo-grid .featured {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        @media (max-width: 768px) {
+            .demo-grid .featured {
+                grid-column: span 1;
+                grid-row: span 2;
+            }
+            
+            .demo-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">Bento<span>Grid</span></a>
+            <ul class="nav-links">
+                <li><a href="#getting-started">Getting Started</a></li>
+                <li><a href="#components">Components</a></li>
+                <li><a href="#layouts">Layouts</a></li>
+                <li><a href="#examples">Examples</a></li>
+                <!-- <li><a href="https://github.com" target="_blank">GitHub <i class="fas fa-external-link-alt"></i></a></li> -->
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero" id="getting-started">
+            <h1>Bento Grid Framework</h1>
+            <p>A modern, customizable CSS framework for creating beautiful bento-style grid layouts. Build responsive, visually appealing content grids with minimal effort.</p>
+            <div style="display: flex; gap: 1rem; justify-content: center;">
+                <a href="#components" class="btn btn-primary">Get Started</a>
+                <a href="https://github.com" target="_blank" class="btn">View on GitHub</a>
+            </div>
+        </section>
+
+        <!-- Components Section -->
+        <section id="components">
+            <h2><i class="fas fa-cube"></i> Components</h2>
+            <p>Bento Grid provides reusable components that you can combine to create beautiful layouts.</p>
+
+            <h3>Cards</h3>
+            <p>Flexible content cards with multiple styles and configurations.</p>
+            
+            <div class="code-preview">
+                <div class="preview-header">
+                    <div class="preview-title">Card Preview</div>
+                    <div class="preview-actions">
+                        <button class="btn" onclick="copyCode('card-code')">Copy Code</button>
+                    </div>
+                </div>
+                <div class="preview-body">
+                    <div class="demo-grid">
+                        <div class="bento-item">
+                            <span class="article-tag">Technology</span>
+                            <h3>Mastering CSS Grid</h3>
+                            <p>Learn advanced layout techniques to create responsive and beautiful web designs.</p>
+                            <span class="read-time">5 min read</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="code-container">
+                <div class="code-header">
+                    <div>HTML Code</div>
+                    <div class="preview-actions">
+                        <button class="btn" onclick="copyCode('card-code')">Copy</button>
+                    </div>
+                </div>
+                <div class="code-content">
+                    <pre id="card-code"><code>&lt;div class="bento-item"&gt;
+    &lt;span class="article-tag"&gt;Technology&lt;/span&gt;
+    &lt;h3&gt;Mastering CSS Grid&lt;/h3&gt;
+    &lt;p&gt;Learn advanced layout techniques to create responsive and beautiful web designs.&lt;/p&gt;
+    &lt;span class="read-time"&gt;5 min read&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+
+            <h3>Carousels</h3>
+            <p>Interactive carousel components with auto-advance and dot navigation.</p>
+            
+            <div class="code-preview">
+                <div class="preview-header">
+                    <div class="preview-title">Carousel Preview</div>
+                    <div class="preview-actions">
+                        <button class="btn" onclick="copyCode('carousel-code')">Copy Code</button>
+                    </div>
+                </div>
+                <div class="preview-body">
+                    <div class="demo-grid">
+                        <div class="bento-item featured" id="demo-carousel-1">
+                            <div class="carousel-container">
+                                <div class="carousel-slide active">
+                                    <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&h=600&fit=crop" alt="Web Development" class="carousel-image">
+                                    <div class="carousel-content">
+                                        <h2>The Future of Web Development</h2>
+                                        <p>Exploring emerging technologies and frameworks shaping the next generation of web experiences.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="carousel-slide">
+                                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop" alt="AI Trends" class="carousel-image">
+                                    <div class="carousel-content">
+                                        <h2>AI and Machine Learning Trends</h2>
+                                        <p>Discover how artificial intelligence is revolutionizing industries across the globe.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="carousel-slide">
+                                    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&h=600&fit=crop" alt="Remote Work" class="carousel-image">
+                                    <div class="carousel-content">
+                                        <h2>Remote Work Revolution</h2>
+                                        <p>How distributed teams are reshaping the modern workplace and corporate culture.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="carousel-dots">
+                                    <div class="dot active"></div>
+                                    <div class="dot"></div>
+                                    <div class="dot"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="code-container">
+                <div class="code-header">
+                    <div>HTML Code</div>
+                    <div class="preview-actions">
+                        <button class="btn" onclick="copyCode('carousel-code')">Copy</button>
+                    </div>
+                </div>
+                <div class="code-content">
+                    <pre id="carousel-code"><code>&lt;div class="bento-item featured"&gt;
+    &lt;div class="carousel-container"&gt;
+        &lt;div class="carousel-slide active"&gt;
+            &lt;img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&h=600&fit=crop" 
+                 alt="Web Development" 
+                 class="carousel-image"&gt;
+            &lt;div class="carousel-content"&gt;
+                &lt;h2&gt;The Future of Web Development&lt;/h2&gt;
+                &lt;p&gt;Exploring emerging technologies and frameworks...&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        
+        &lt;div class="carousel-slide"&gt;
+            &lt;img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop" 
+                 alt="AI Trends" 
+                 class="carousel-image"&gt;
+            &lt;div class="carousel-content"&gt;
+                &lt;h2&gt;AI and Machine Learning Trends&lt;/h2&gt;
+                &lt;p&gt;Discover how artificial intelligence is revolutionizing...&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        
+        &lt;div class="carousel-dots"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </section>
+        
+        <section id="examples">
+            <h3>Complete Example Grid</h3>
+            <p>Here's how the complete bento grid looks with all components:</p>
+            
+            <div class="code-preview">
+                <div class="preview-header">
+                    <div class="preview-title">Complete Grid Preview</div>
+                    <div class="preview-actions">
+                        <button class="btn" onclick="copyCode('complete-grid-code')">Copy Grid HTML</button>
+                    </div>
+                </div>
+                <div class="preview-body">
+                    <div class="demo-grid" id="complete-demo-grid">
+                        <!-- Featured Carousel -->
+                        <div class="bento-item featured" id="main-demo-carousel">
+                            <div class="carousel-container">
+                                <div class="carousel-slide active">
+                                    <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&h=600&fit=crop" alt="Web Development" class="carousel-image">
+                                    <div class="carousel-content">
+                                        <h2>The Future of Web Development</h2>
+                                        <p>Exploring emerging technologies and frameworks shaping the next generation of web experiences.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="carousel-slide">
+                                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop" alt="AI Trends" class="carousel-image">
+                                    <div class="carousel-content">
+                                        <h2>AI and Machine Learning Trends</h2>
+                                        <p>Discover how artificial intelligence is revolutionizing industries across the globe.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="carousel-slide">
+                                    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&h=600&fit=crop" alt="Remote Work" class="carousel-image">
+                                    <div class="carousel-content">
+                                        <h2>Remote Work Revolution</h2>
+                                        <p>How distributed teams are reshaping the modern workplace and corporate culture.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="carousel-dots">
+                                    <div class="dot active"></div>
+                                    <div class="dot"></div>
+                                    <div class="dot"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Regular Articles -->
+                        <div class="bento-item">
+                            <span class="article-tag">Technology</span>
+                            <h3>Mastering CSS Grid</h3>
+                            <p>Learn advanced layout techniques to create responsive and beautiful web designs.</p>
+                            <span class="read-time">5 min read</span>
+                        </div>
+
+                        <div class="bento-item">
+                            <span class="article-tag">Design</span>
+                            <h3>Minimalist UI Principles</h3>
+                            <p>Discover the art of creating clean, functional interfaces that users love.</p>
+                            <span class="read-time">4 min read</span>
+                        </div>
+
+                        <div class="bento-item">
+                            <span class="article-tag">JavaScript</span>
+                            <h3>Async/Await Best Practices</h3>
+                            <p>Master asynchronous programming patterns for cleaner, more maintainable code.</p>
+                            <span class="read-time">7 min read</span>
+                                    <span class="article-tag">Performance</span>
+                            <h3>Optimizing Web Performance</h3>
+                            <p>Essential techniques to make your websites load faster and perform better.</p>
+                            <span class="read-time">6 min read</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Complete Grid Code - HTML only -->
+            <div class="code-container">
+                <div class="code-header">
+                    <div>HTML Code for Grid (Copy & Paste Ready)</div>
+                    <div class="preview-actions">
+                        <button class="btn" onclick="copyCode('complete-grid-code')">Copy</button>
+                    </div>
+                </div>
+                <div class="code-content">
+                    <pre id="complete-grid-code"><code>&lt;div class="bento-grid"&gt;
+    &lt;!-- Featured Carousel --&gt;
+    &lt;div class="bento-item featured"&gt;
+        &lt;div class="carousel-container"&gt;
+            &lt;div class="carousel-slide active"&gt;
+                &lt;img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&h=600&fit=crop" 
+                     alt="Web Development" 
+                     class="carousel-image"&gt;
+                &lt;div class="carousel-content"&gt;
+                    &lt;h2&gt;The Future of Web Development&lt;/h2&gt;
+                    &lt;p&gt;Exploring emerging technologies and frameworks shaping the next generation of web experiences.&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            
+            &lt;div class="carousel-slide"&gt;
+                &lt;img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop" 
+                     alt="AI Trends" 
+                     class="carousel-image"&gt;
+                &lt;div class="carousel-content"&gt;
+                    &lt;h2&gt;AI and Machine Learning Trends&lt;/h2&gt;
+                    &lt;p&gt;Discover how artificial intelligence is revolutionizing industries across the globe.&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            
+            &lt;div class="carousel-slide"&gt;
+                &lt;img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&h=600&fit=crop" 
+                     alt="Remote Work" 
+                     class="carousel-image"&gt;
+                &lt;div class="carousel-content"&gt;
+                    &lt;h2&gt;Remote Work Revolution&lt;/h2&gt;
+                    &lt;p&gt;How distributed teams are reshaping the modern workplace and corporate culture.&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            
+            &lt;div class="carousel-dots"&gt;&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Regular Articles --&gt;
+    &lt;div class="bento-item"&gt;
+        &lt;span class="article-tag"&gt;Technology&lt;/span&gt;
+        &lt;h3&gt;Mastering CSS Grid&lt;/h3&gt;
+        &lt;p&gt;Learn advanced layout techniques to create responsive and beautiful web designs.&lt;/p&gt;
+        &lt;span class="read-time"&gt;5 min read&lt;/span&gt;
+    &lt;/div&gt;
+
+    &lt;div class="bento-item"&gt;
+        &lt;span class="article-tag"&gt;Design&lt;/span&gt;
+        &lt;h3&gt;Minimalist UI Principles&lt;/h3&gt;
+        &lt;p&gt;Discover the art of creating clean, functional interfaces that users love.&lt;/p&gt;
+        &lt;span class="read-time"&gt;4 min read&lt;/span&gt;
+    &lt;/div&gt;
+
+    &lt;div class="bento-item"&gt;
+        &lt;span class="article-tag"&gt;JavaScript&lt;/span&gt;
+        &lt;h3&gt;Async/Await Best Practices&lt;/h3&gt;
+        &lt;p&gt;Master asynchronous programming patterns for cleaner, more maintainable code.&lt;/p&gt;
+        &lt;span class="read-time"&gt;7 min read&lt;/span&gt;
+    &lt;/div&gt;
+
+    &lt;div class="bento-item"&gt;
+        &lt;span class="article-tag"&gt;Performance&lt;/span&gt;
+        &lt;h3&gt;Optimizing Web Performance&lt;/h3&gt;
+        &lt;p&gt;Essential techniques to make your websites load faster and perform better.&lt;/p&gt;
+        &lt;span class="read-time"&gt;6 min read&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>                </div>
+
+                        
+        </section>
+       
+
+        <!-- Layouts Section -->
+         <div class="bento-item">
+
+        <section id="layouts">
+            
+            <h2><i class="fas fa-th-large"></i> Layout Styles</h2>
+            <p>Choose from multiple pre-built bento grid layouts or create your own custom arrangement.</p>
+
+            <div class="layout-grid">
+                <!-- Pinterest Style -->
+                <div class="layout-card">
+                    <div class="layout-preview" style="grid-template-rows: 1fr 2fr 1fr 1fr;">
+                        <div style="grid-column: span 2;"></div>
+                        <div style="grid-row: span 2;"></div>
+                        <div></div>
+                        <div></div>
+                        <div style="grid-column: span 2;"></div>
+                    </div>
+                    <div class="layout-info">
+                        <div class="layout-name">Pinterest Style</div>
+                        <div class="layout-desc">Masonry layout with varying card heights</div>
+                        <a class="btn" style="margin-top: 1rem; width: 100%; font-size: 14px; text-align: center;" href="pinterest-layout-bento.html">View Example</a>
+                    </div>
+                </div>
+
+
+                <!-- Mosaic Style 2 -->
+                <div class="layout-card">
+                    <div class="layout-preview" style="grid-template-columns: repeat(3, 1fr);">
+                        <div style="grid-column: span 3; grid-row: span 2;"></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="layout-info">
+                        <div class="layout-name">Header Banner</div>
+                        <div class="layout-desc">Large top banner with smaller cards below</div>
+                        <a class="btn" style="margin-top: 1rem; width: 100%; font-size: 14px; text-align: center;" href="header-banner.html">View Example</a>
+                    </div>
+                </div>
+
+                <!-- Mosaic Style 3 -->
+                <div class="layout-card">
+                    <div class="layout-preview">
+                        <div style="grid-column: span 2;"></div>
+                        <div></div>
+                        <div></div>
+                        <div style="grid-column: span 2;"></div>
+                        <div style="grid-column: span 2; grid-row: span 2;"></div>
+                    </div>
+                    <div class="layout-info">
+                        <div class="layout-name">Balanced Grid</div>
+                        <div class="layout-desc">Symmetrical layout with balanced spacing</div>
+                        <a class="btn" style="margin-top: 1rem; width: 100%; font-size: 14px; text-align: center;" href="balanced-grid-bento.html">View Example</a>
+                    </div>
+                </div>
+
+                <!-- Mosaic Style 4 -->
+                <div class="layout-card">
+                    <div class="layout-preview" style="grid-template-columns: repeat(5, 1fr);">
+                        <div style="grid-column: span 3; grid-row: span 2;"></div>
+                        <div style="grid-column: span 2;"></div>
+                        <div style="grid-column: span 2;"></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="layout-info">
+                        <div class="layout-name">Asymmetrical</div>
+                        <div class="layout-desc">Dynamic layout with varied card sizes</div>
+                        <a class="btn" style="margin-top: 1rem; width: 100%; font-size: 14px; text-align: center;" href="assymetrical-bento.html">View Example</a>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Custom Grid System</h3>
+            <p>Create your own layout using our grid classes:</p>
+            
+            <div class="code-container">
+                <div class="code-header">
+                    <div>Custom Grid Example</div>
+                </div>
+                <div class="code-content">
+                    <pre><code>&lt;div class="bento-grid"&gt;
+    &lt;div class="bento-item span-2 row-2"&gt;
+        &lt;!-- Large featured content --&gt;
+    &lt;/div&gt;
+    &lt;div class="bento-item"&gt;
+        &lt;!-- Regular card --&gt;
+    &lt;/div&gt;
+    &lt;div class="bento-item"&gt;
+        &lt;!-- Regular card --&gt;
+    &lt;/div&gt;
+    &lt;div class="bento-item span-2"&gt;
+        &lt;!-- Wide card --&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+
+             <a class="btn btn-primary" style="margin-top: 1rem; width: 250px;" href="custom-layout-doc.html">Detailed Documentation</a>
+
+        </section>
+
+        <!-- Installation Section -->
+        <section id="installation">
+            <h2><i class="fas fa-download"></i> Installation</h2>
+            
+            <h3>Via CDN</h3>
+            <div class="code-container">
+                <div class="code-content">
+                    <pre><code>&lt;!-- CSS --&gt;
+&lt;link rel="stylesheet" href="https://bento-grid-framework.intellectualbright.workers.dev/assets/css/bento-grid.css"&gt;
+&lt;script src="https://bento-grid-framework.intellectualbright.workers.dev/assets/js/bento-grid.js"&gt;&lt;/script&gt;
+
+
+
+&lt;!-- Or (Minified) --&gt;
+
+&lt;link rel="stylesheet" href="https://bento-grid-framework.intellectualbright.workers.dev/minified/bento-grid-minified.css"&gt;
+
+&lt;script src="https://bento-grid-framework.intellectualbright.workers.dev/minified/bento-grid-minified.js"&gt;&lt;/script&gt;
+
+</code></pre>
+                </div>
+            </div>
+
+
+            <h3>Manual Download</h3>
+            <p>Download the files and include them in your project:</p>
+            <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                <button class="btn" onclick="downloadFile('bento-grid.css')"><i class="fas fa-file-code"></i> bento-grid.css</button>
+                <button class="btn" onclick="downloadFile('bento-grid.js')"><i class="fas fa-file-code"></i> bento-grid.js</button>
+            </div>
+        </section>
+    </div>
+</div>
+
+    <footer>
+        <div class="container">
+            <div class="logo" style="font-size: 2rem; margin-bottom: 1rem;">Bento<span>Grid</span></div>
+            <p>A modern CSS framework for beautiful bento-style layouts</p>
+            <div class="footer-links">
+                <a href="#getting-started">Documentation</a>
+                <!-- <a href="https://github.com">GitHub</a> -->
+                <a href="#examples">Examples</a>
+                <a href="#installation">Installation</a>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Bento Grid Framework by Bright Obeng Abankwa. Released under MIT License.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Copy code to clipboard
+        function copyCode(id) {
+            const codeElement = document.getElementById(id);
+            const textArea = document.createElement('textarea');
+            textArea.value = codeElement.textContent;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+            
+            // Show feedback
+            const button = event.target;
+            const originalText = button.textContent;
+            button.textContent = 'Copied!';
+            button.style.background = '#2ecc71';
+            
+            setTimeout(() => {
+                button.textContent = originalText;
+                button.style.background = '';
+            }, 2000);
+        }
+
+        // Carousel functionality - EXACTLY matching your original
+        function initDemoCarousels() {
+            document.querySelectorAll('.bento-item.featured').forEach((featuredItem, index) => {
+                const carouselId = featuredItem.id || `demo-carousel-${index}`;
+                featuredItem.id = carouselId;
+                
+                const container = featuredItem.querySelector('.carousel-container');
+                const slides = container.querySelectorAll('.carousel-slide');
+                const dotsContainer = container.querySelector('.carousel-dots');
+                
+                // Clear existing dots
+                dotsContainer.innerHTML = '';
+                
+                // Create dots
+                slides.forEach((_, slideIndex) => {
+                    const dot = document.createElement('div');
+                    dot.classList.add('dot');
+                    if (slideIndex === 0) dot.classList.add('active');
+                    dot.addEventListener('click', () => goToSlide(carouselId, slideIndex));
+                    dotsContainer.appendChild(dot);
+                });
+                
+                const dots = dotsContainer.querySelectorAll('.dot');
+                
+                // Store carousel data
+                featuredItem._carouselData = {
+                    currentSlide: 0,
+                    slides: slides,
+                    dots: dots,
+                    intervalId: null
+                };
+                
+                // Start auto-advance
+                featuredItem._carouselData.intervalId = setInterval(() => {
+                    nextSlide(carouselId);
+                }, 5000);
+                
+                // Pause on hover
+                featuredItem.addEventListener('mouseenter', () => {
+                    clearInterval(featuredItem._carouselData.intervalId);
+                });
+                
+                featuredItem.addEventListener('mouseleave', () => {
+                    clearInterval(featuredItem._carouselData.intervalId);
+                    featuredItem._carouselData.intervalId = setInterval(() => {
+                        nextSlide(carouselId);
+                    }, 5000);
+                });
+            });
+        }
+
+        function goToSlide(carouselId, n) {
+            const featuredItem = document.getElementById(carouselId);
+            if (!featuredItem || !featuredItem._carouselData) return;
+            
+            const data = featuredItem._carouselData;
+            data.slides[data.currentSlide].classList.remove('active');
+            data.dots[data.currentSlide].classList.remove('active');
+            data.currentSlide = n;
+            data.slides[data.currentSlide].classList.add('active');
+            data.dots[data.currentSlide].classList.add('active');
+        }
+
+        function nextSlide(carouselId) {
+            const featuredItem = document.getElementById(carouselId);
+            if (!featuredItem || !featuredItem._carouselData) return;
+            
+            const data = featuredItem._carouselData;
+            const nextIndex = (data.currentSlide + 1) % data.slides.length;
+            goToSlide(carouselId, nextIndex);
+        }
+
+        // Add click handlers to demo cards
+        document.querySelectorAll('.demo-grid .bento-item:not(.featured)').forEach(item => {
+            item.addEventListener('click', () => {
+                const title = item.querySelector('h3').textContent;
+                alert(`Clicked: ${title}\n\nIn a real implementation, this would navigate to the article.`);
+            });
+        });
+
+        // Initialize carousels when page loads
+        document.addEventListener('DOMContentLoaded', initDemoCarousels);
+
+
+
+        // Download file simulation
+        function downloadFile(filename) {
+                let filePath;
+                if (filename.endsWith('.css')) {
+                    filePath = `assets/css/${filename}`;
+                } else if (filename.endsWith('.js')) {
+                    filePath = `assets/js/${filename}`;
+                }
+                }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
